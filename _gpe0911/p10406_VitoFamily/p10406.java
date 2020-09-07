@@ -1,3 +1,5 @@
+//也可以參考這篇 http://kpeggy.blogspot.com/2014/01/javavitos-family.html
+
 import java.util.Scanner;
 import java.util.Arrays;
 //import java.util.Math;
