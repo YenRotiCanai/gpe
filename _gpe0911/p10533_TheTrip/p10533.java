@@ -1,4 +1,5 @@
 //https://github.com/UMassACM/programming-challenges/blob/master/uva/10137/Main.java
+//答案自己測是對的，可是gpe WA
 
 import java.util.*;
 
