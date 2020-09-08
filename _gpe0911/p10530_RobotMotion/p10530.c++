@@ -38,7 +38,7 @@ int main(){
 		// cout<<"smap[X][Y]:"<<smap[X][Y]<<", count:"<<count<<endl;
 
 		//如果他們還在裡面的話(遇到死循環也就是走過的)
-		//因為他是遇到走過的點(假設是p)時跳出來，所以就拿p當下的步數，作為step before，然後那最後的步數 - p 就找到他開始死循環的步數也就是 loop of step
+		//因為他是遇到走過的點(假設是p)時跳出來，所以就拿p當下的步數-1，作為step before，然後那最後的步數 - p 就找到他開始死循環的步數也就是 loop of step
 		if(X >= 0 && X < N && Y >= 0 && Y < M){
 			printf("%d step(s) before a loop of %d step(s)\n", smap[X][Y]-1, count-smap[X][Y]);
 		}else{
