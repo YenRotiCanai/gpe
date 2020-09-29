@@ -1,6 +1,9 @@
 //https://a7069810.pixnet.net/blog/post/393000298-%5Buva10415%5D-eb-alto-saxophone-player
 //TimeLimit
 
+//https://blog.xuite.net/b81621java/blog/175566184-11020%3A+Eb+Alto+Saxophone+Player%09
+//Accepted
+
 import java.util.HashMap;
 import java.util.Scanner;
 
