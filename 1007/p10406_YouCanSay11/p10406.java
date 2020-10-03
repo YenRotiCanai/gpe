@@ -1,3 +1,4 @@
+//https://a7069810.pixnet.net/blog/post/391641826-%5Buva10929%5D-you-can-say-11
 import java.util.*;
 
 class p10406{
