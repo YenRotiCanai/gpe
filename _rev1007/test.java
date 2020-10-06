@@ -1,38 +1,33 @@
-import java.util.*;
+import java.math.BigInteger;
+import java.util.Scanner;
 
-public class Main {
-	public static void main(String args[]) {
-		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
-		boolean first = true;
-		while(N-- > 0) {
-			if (!first)
-				System.out.println();
-			sc.nextLine();
-			int M = Integer.parseInt(sc.nextLine());
-			int ans[] = new int [M+1];
-			for (int i = 1; i <= M; i++) {
-				StringTokenizer st = new StringTokenizer(sc.nextLine());
-				
-				int a = Integer.parseInt(st.nextToken());
-				int b = Integer.parseInt(st.nextToken());
-				ans[i] = a + b;
-			}
-			
-			for (int i = M; i >= 1; i--) {
-				ans[i-1] += ans[i]/10;
-				ans[i] %= 10;
-			}
-			
-			StringBuilder sb = new StringBuilder();
-			if (ans[0] != 0)
-				sb.append(ans[0]); 
-			
-			for (int i = 1; i <= M; i++) 
-				sb.append(ans[i]);
-			
-			System.out.println(sb.toString());
-			first = false;
-		}
-	}
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        while (sc.hasNext()){
+            int num = sc.nextInt();
+            BigInteger ans = fecto(num);
+
+            String str = ans.toString();
+
+            int Sumans = 0;
+            for(int i = str.length() - 1; i >= 0; i--){
+                Sumans += str.charAt(i) - '0';
+            }
+
+            System.out.println(Sumans);
+        }
+    }
+
+    public static BigInteger fecto(int num){
+
+        BigInteger ans = BigInteger.valueOf(num);
+
+        for(long i = 2; i < num; i++)
+            ans = ans.multiply(BigInteger.valueOf(i));
+        return ans;
+    }
 }
