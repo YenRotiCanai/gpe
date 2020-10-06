@@ -1,3 +1,5 @@
+//https://a7069810.pixnet.net/blog/post/394903234-%5Buva10050%5D-hartals
+
 import java.util.Scanner;
 
 class p10517{
@@ -13,13 +15,14 @@ class p10517{
 			int party[] = new int[p]; //黨派罷工天
 
 			for(int i=0; i<p; i++){
-				party[i] = sc.nextInt(); //什麼時候罷工
+				party[i] = sc.nextInt(); //罷工天的倍數
 			}
 
+			//實際罷工的日期
 			for(int i=0; i<p; i++){
-				int multRec = 0; //記錄天數的倍數
+				int multRec = 0;
 				for(int j=1; j<d+1; j++){
-					multRec = party[i] * j; //計算罷工的倍數
+					multRec = party[i] * j; //罷工的日期
 
 					if(multRec < d+1){
 						days[multRec] = 1;
