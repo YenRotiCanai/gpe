@@ -1,33 +1,22 @@
 import java.util.*;
 
 class rev{
-	public static long Reverse(long x){
-		if(x<10) return x;
-		else{
-			long input = x, result = 0;
-			while(input>0){
-				result = (result*10)+(input%10);
-				input /= 10;
-			}
-			return result;
-		}
-	}
-
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
-		long cases = sc.nextLong();
-		while(cases --> 0){
-			long N = sc.nextLong();
-			int count = 1;
+		while(sc.hasNextDouble()){
+			double x1 = sc.nextDouble();
+			double y1 = sc.nextDouble();
+			double x2 = sc.nextDouble();
+			double y2 = sc.nextDouble();
+			double x3 = sc.nextDouble();
+			double y3 = sc.nextDouble();
+			double x4 = sc.nextDouble();
+            double y4 = sc.nextDouble();
 
-			N += Reverse(N);
-
-			while(Reverse(N) != N){
-				N += Reverse(N);
-				count++;
-			}
-
-			System.out.println(count+" "+N);
+            if(x1==x3 && y1==y3) System.out.printf(("%.3f %.3f%n"), (x2+x4)-x1, (y2+y4)-y1);
+            else if(x1==x4 && y1==y4) System.out.printf(("%.3f %.3f%n"), (x2+x3)-x1, (y2+y3)-y1);
+            else if(x2==x3 && y2==y3) System.out.printf(("%.3f %.3f%n"), (x1+x4)-x2, (y1+y4)-y2);
+            else System.out.printf(("%.3f %.3f%n"), (x1+x3)-x2, (y1+y3)-y2);
 		}
 	}
 }

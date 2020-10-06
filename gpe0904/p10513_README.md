@@ -11,11 +11,13 @@
  - input mod 10 = 3 // 現在拿到最後一個號碼了
  - result = (0*10) + 3, result = 3
  - 最後把 input / 10 = 12
+ ---
  - 下一輪
  - input 變成 12 了
  - input mod 10 = 2 // 最後一個號碼
  - result = 3*10 + 2, result = 32
  - input / 10 = 1
+ ---
  - 最後一輪
  - input 變成 1
  - input mod 10 = 1
