@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
 	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
-		int N = Integer.parseInt(sc.nextLine());
+		int N = sc.nextInt();
 		boolean first = true;
 		while(N-- > 0) {
 			if (!first)

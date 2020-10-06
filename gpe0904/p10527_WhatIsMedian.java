@@ -3,7 +3,7 @@ class p10527 {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         
-        int arr[] = new int[10]; // 題目說 N < 10000
+        int arr[] = new int[10001]; // 題目說 N < 10000
         int count = 1;
 
         while(sc.hasNext()){

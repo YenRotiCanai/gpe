@@ -10,6 +10,7 @@ class p10510{
 		while(N-- >0){
 			if(!first) System.out.println();
 			sc.nextLine();
+
 			int M = Integer.parseInt(sc.nextLine());
 			int ans[] = new int[M+1];
 			for(int i=1; i<=M; i++){
@@ -29,7 +30,6 @@ class p10510{
 			if(ans[0]!=0) sb.append(ans[0]);
 
 			for(int i=1; i<=M; i++){
-				System.out.println(i+"."+ans[i]);
 				sb.append(ans[i]);
 			}
 			System.out.println(sb.toString());
