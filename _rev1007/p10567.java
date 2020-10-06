@@ -1,8 +1,9 @@
-import java.util.*;
+import java.util.Scanner;
 
-class rev{
+class p10567{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
+
 		while(sc.hasNext()){
 			String s1 = sc.nextLine();
 			String s2 = sc.nextLine();
@@ -17,7 +18,7 @@ class rev{
 			}
 
 			for(int k=79; k<=122; k++){
-				for(int num=1; num<=Math.min(c1[k],c2[k]); num++){
+				for(int num=1; num <= Math.min(c1[k],c2[k]); num++){
 					System.out.print((char)k);
 				}
 			}
