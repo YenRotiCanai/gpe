@@ -1,33 +1,35 @@
-import java.math.BigInteger;
-import java.util.Scanner;
+import java.util.*;
 
 class Main {
+  public static void main(String[] args){
+	  Scanner br = new Scanner(System.in);
+	  String s;
+	  while((s=br.nextLine())!=null){
+		  char [] c1=s.toCharArray();
+		  char [] c2=br.nextLine().toCharArray();
 
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
-        while (sc.hasNext()){
-            int num = sc.nextInt();
-            BigInteger ans = fecto(num);
-
-            String str = ans.toString();
-
-            int Sumans = 0;
-            for(int i = str.length() - 1; i >= 0; i--){
-                Sumans += str.charAt(i) - '0';
-            }
-
-            System.out.println(Sumans);
-        }
-    }
-
-    public static BigInteger fecto(int num){
-
-        BigInteger ans = BigInteger.valueOf(num);
-
-        for(long i = 2; i < num; i++)
-            ans = ans.multiply(BigInteger.valueOf(i));
-        return ans;
-    }
+		  int count=0;
+		  int k=0;
+		  if(c1.length > c2.length){
+			  for(int i=0;i<c2.length;i++){
+				  for( int j=k;j<c1.length;j++){	
+					  if(c2[i]==c1[j]) {
+						  count++;
+						  k = j;
+					  }
+				  }
+			  }
+		  }else{
+			  for(int i=0; i<c1.length; i++){
+				  for(int j=k; j<c2.length; j++){
+					  if(c1[i]==c2[j]) {
+						  count++;
+						  k=j;
+						}
+				  }
+			  }
+		  }
+		  System.out.println(count);
+		}
+	}
 }

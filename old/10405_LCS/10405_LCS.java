@@ -20,7 +20,7 @@ class Main {
 				  
 				  for( int j=k;j<c1.length;j++){
 
-					  System.out.println("2. Value of j: "+j);
+					  //System.out.println("2. Value of j: "+j);
 					  if(c2[i]==c1[j]) {
 						  count++;
 						  k = j;

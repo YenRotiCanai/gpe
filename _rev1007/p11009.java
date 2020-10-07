@@ -1,6 +1,6 @@
-import java.util.*;
+import java.util.Scanner;
 
-class rev{
+class p10566{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
 
@@ -18,13 +18,13 @@ class rev{
 
 			for(int i=0; i<s2Len; i++){
 				if(s2Arr[i] == s1Arr[s1Index]){
-					s1Index++;
+					s1Index ++;
 					if(s1Index == s1Len) break;
 				}
 			}
+
 			if(s1Index == s1Len) System.out.println("Yes");
 			else System.out.println("No");
 		}
-		
 	}
 }
