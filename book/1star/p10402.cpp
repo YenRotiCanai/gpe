@@ -1,26 +1,32 @@
+//統計全部字母出現過的次數，然後按照次數由多到少印出來，如果有次數一樣的就按照字母的大小排序。
+
 #include <iostream>
-#include <cctype> //用來分類或轉換字元的header
+#include <string>
+
 using namespace std;
 
-int counT[256],len;
+int cT[256], len;
 
 int main(){
 	int n;
+	string s;
 	char c;
 	cin >> n;
+	getline(cin, s);
+
 	while(n--){
-		while(cin >> c){
+		getline(cin, s);
+		for(int i=0; i<s.length(); i++){
+			c = toupper(s[i]);
+			cT[c]++;
 			len++;
-			counT[toupper(c)]++; //每吃一個字元進來，就把len+1，然後變成大寫後在count[]裡面對應+1
-			}
-		while(--len){
-			cout << len << endl;
-			for(c='A'; c<='Z';c++){
-				if(counT[c]==len)
-					cout<< c << " " << counT[c] << endl;
+		}
+	}
+	while(--len){
+		for(c='A'; c<='Z'; c++){
+			if(cT[c] == len){
+				cout << c << " " << len << endl;
 			}
 		}
 	}
-	
-	return 0;
 }
