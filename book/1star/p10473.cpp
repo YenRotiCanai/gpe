@@ -1,5 +1,5 @@
 #include <cstdio>
-#include <string>
+#include <cstring>
 
 int main(int argc, char *argv[]){
 	char n[11];
