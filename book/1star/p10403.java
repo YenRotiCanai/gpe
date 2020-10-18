@@ -25,8 +25,10 @@ class p10403{
 	public static int base16(int n){
 		int count = 0;
 		while(n>0){
-			int temp = n%10;
+			int temp = n%10; //先 mod 10，得到的答案（temp）拿去轉成 2 進制
 			n/=10;
+
+			//轉換成 2 進制
 			while(temp>0){
 				if(temp%2==1) count++;
 				temp/=2;
