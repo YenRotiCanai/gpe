@@ -16,14 +16,15 @@ class p10421{
 			s1 = Integer.parseInt(sc.nextLine(), 2);
 			s2 = Integer.parseInt(sc.nextLine(), 2);
 
+			//輾轉相除法
 			int tmp;
-
 			while(s2>0){
 				tmp = s1 % s2;
 				s1 = s2;
 				s2 = tmp;
 			}
 
+			//如果 s1 是 1 以外的數字，代表有其他公因數
 			if(s1 > 1) System.out.println("Pair #" + i + ": All you need is love!");
 			else System.out.println("Pair #" + i + ": Love is not all you need!");
 		}
