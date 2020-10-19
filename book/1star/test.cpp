@@ -1,18 +1,18 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-int cT[256], len=0;
-
 int main(){
-	char c, k=0;
-	while(cin.get(c)){
+	int n;
+	cin >> n;
+	for(int i=1; i<=n; i++){
+		int x1, x2, y1, y2;
+		cin >> x1 >> y1 >> x2 >> y2;
+		int pos1, pos2;
+		pos1 = (x1+y1+1)*(x1+y1)/2+x1;
+		pos2 = (x2+y2+1)*(x2+y2)/2+x2;
 
-		cout << c << endl;
-
-		// if(c!='"') cout << c;
-		// else if(++k%2) cout << "``";
-		// else cout << "''";
+		cout << "Case " << i << ": " << pos2-pos1 << endl;
 	}
+	return 0;
 }
