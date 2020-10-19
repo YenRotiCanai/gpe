@@ -5,24 +5,35 @@ class test {
 
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
-		int newline = 0;
-
-		while(sc.hasNextLine()){
-			if((newline++)!=0) System.out.println("");
-			String st = sc.nextLine();
-
-			int arr[] = new int[127];
-			int max = 0;
-			for(int i=0; i<st.length(); i++) arr[st.charAt(i)]++;
+		
+		int cases = sc.nextInt();
+		while(cases-->0){
+			int L = sc.nextInt();
+			int arr[] = new int[L];
 			for(int i=0; i<arr.length; i++){
-				if(arr[i] > max) max = arr[i];
+				arr[i] = sc.nextInt();
 			}
 
-			for(int i=1; i<=max; i++){
-				for(int j=arr.length-1; j>=0; j--){
-					if(arr[j]==i) System.out.println(j+" "+arr[j]);
+			int count = 0;
+
+
+			for(int i=0; i<L-1; i++){
+
+				//System.out.print("i:"+i);
+				//重點就是這個 j<L-i-1, 第二層迴圈的限制要減掉第一層的 i，才可以每次都減少一次
+				for(int j=0; j<L-i-1; j++){
+
+					//System.out.print(" j:"+j);
+					//System.out.println(" a:"+arr[j]+" ,b:"+arr[j+1]);
+					if(arr[j]>arr[j+1]){
+						int tmp = arr[j+1];
+						arr[j+1] = arr[j];
+						arr[j] = tmp;
+						count++;
+					}
 				}
 			}
+			System.out.println("Optimal train swapping takes "+count+" swaps.");
 		}
 		
 	}
