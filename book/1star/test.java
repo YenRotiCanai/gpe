@@ -1,45 +1,29 @@
-import java.util.Scanner;
-
-class uva10418{
-	public static void main(String args[]){
-		Scanner sc=new Scanner(System.in);
-		int T = 0, h, w;
-
-		while((sc.hasNext()) && (h=sc.nextInt())!=0 && (w=sc.nextInt())!=0){
-			if(T!=0) System.out.println();
-
-			char field[][] = new char[105][105];
-
-			for(int i=1; i<=h; i++){
-				for(int j=1; j<=w; j++){
-					field[i][j] = '0';
-				}
-			}
-
-			for(int i=1; i<=h; i++){
-				String st = sc.next();
-				for(int j=1; j<=w; j++){
-					char d = st.charAt(j-1);
-
-					if(d == '*'){
-						field[i][j] = '*';
-
-						for(int m=-1; m<=1; m++){
-							for(int n=-1; n<=1; n++){
-								if(field[m+i][n+j]!='*')
-									field[m+i][n+j]++;
-							}
-						}
-					}
-				}
-			}
-			System.out.println("Field #"+(++T)+":");
-			for(int i=1; i<=h; i++){
-				for(int j=1; j<=w; j++){
-					System.out.print(field[i][j]);
-				}
-				System.out.println();
-			}
-		}
-	}
+import java.util.*;  
+  
+public class Main {  
+  
+    public static void main(String[] args) {  
+        Scanner scn = new Scanner(System.in);  
+       while(scn.hasNext()){
+    	   String str=scn.nextLine();
+    	   StringBuilder sub = new StringBuilder();
+    	   if(str.equals("."))
+    		   break;
+    	   for(int i=0;i<str.length();i++){
+    		   sub.append(str.charAt(i));
+    		   if(str.length()%sub.length()!=0)
+    			   continue;
+    		   boolean b=true;
+    		   for(int j=0;j<str.length();j+=sub.length()){
+    			   if(!str.substring(j,j+sub.length()).equals(sub.toString())){
+    				   b=false;
+    				   break;
+    			   }   
+    		   }
+    		   if(b)
+    			   break;
+    	   }
+    	   System.out.println(str.length()/sub.length());
+       }
+    } 
 }

@@ -1,49 +1,89 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
-class Main{
-
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-
-        int T = 0,h,w;
+class uva118{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int edgeX=sc.nextInt(); //邊界X。
+        int edgeY=sc.nextInt(); //邊界Y。
+        boolean array[][]=new boolean[51][51]; //紀錄之前是否有機器人掉落。
+        for(int i=0;i<51;i++) Arrays.fill(array[i],false);
         
-        while((sc.hasNext()) && (h=sc.nextInt())!=0 && (w=sc.nextInt())!=0 ){
-            if(T!=0) System.out.println(""); //這裡是為了系統的要求，不然直接Scanner input看出來的會和考試卷給的不一樣
+        while(sc.hasNextInt()){
             
-            char field[][] = new char[105][105];
-
-            //初始化陣列，讓他每一個都先預設為 0
-            for(int i=1; i<=h; i++){
-            	for(int j=1; j<=w; j++){
-            		field[i][j] = '0';
-            	}
+            int x=sc.nextInt(); //目前X座標。
+            int y=sc.nextInt(); //目前Y座標。
+            char position=sc.next().charAt(0); //目前面向方向。
+            String cmd=sc.next(); //指令
+            
+            for(int i=0;i<cmd.length();i++){
+                if(cmd.charAt(i)=='F'){
+                    int tempX=x,tempY=y;
+                    
+                    //判斷座標是否加減
+                    if(position=='N') tempY++;
+                    else if(position=='S')tempY--;
+                    else if(position=='W')tempX--;
+                    else tempX++;
+                    
+                    //判斷座標"之前"是否有機器人超出界線、"目前"的機器人是否超出界線。
+                    if(tempX>edgeX || tempY>edgeY || tempX<0 || tempY<0){
+                        //"之前"無機器人超出界線且"目前"機器人超出界線。
+                        if(!array[x][y]){ 
+                            array[x][y]=true;
+                            //輸出答案(超出界線)。
+                            System.out.println(x+" "+y+" "+position+" LOST");
+                            break;
+                        }
+                    }else{
+                        x=tempX;
+                        y=tempY;
+                    }
+                }else{
+                  //查詢方向。
+                    position=findP(position,cmd.charAt(i));
+                }
+                //當指令是最後一筆時即可輸出答案(無超出界線)。
+                if(i==cmd.length()-1) System.out.println(x+" "+y+" "+position);
             }
-
-            for(int i=1; i<=h; i++){
-            	String c = sc.next(); //把每一行先讀進來
-            	for(int j=1; j<=w; j++){
-                    char d = c.charAt(j-1); //然後用charAt抓裡面的字元
-            		if(d == '*'){ //判斷他是不是地雷
-            			field[i][j] = '*';
-
-                        //把地雷的周圍統統 +1
-            			for(int m=-1; m<=1; m++){
-    						for(int n=-1; n<=1; n++){
-    							if(field[m+i][n+j]!='*')
-    								field[m+i][n+j]++;
-    						}
-    					}
-            		}
-            	}
-            }
-            System.out.println("Field #"+(++T)+":");
-            for(int i=1; i<=h; i++){
-				for(int j=1; j<=w; j++){
-					System.out.print(field[i][j]);
-				}
-				System.out.println();
-			}
-			//System.out.println("");
         }
+    }
+    //自定義查詢方向的method。
+    public static char findP(char p,char cmd){
+        switch(cmd){
+            case 'R':
+                switch(p){
+                    case 'N':
+                        p='E';
+                        break;
+                    case 'S':
+                        p='W';
+                        break;
+                    case 'W':
+                        p='N';
+                        break;
+                    case 'E':
+                        p='S';
+                        break;
+                }
+                break;
+            case 'L':
+                switch(p){
+                    case 'N':
+                        p='W';
+                        break;
+                    case 'S':
+                        p='E';
+                        break;
+                    case 'W':
+                        p='S';
+                        break;
+                    case 'E':
+                        p='N';
+                        break;
+                }
+                break;
+        }
+        return p;
     }
 }
