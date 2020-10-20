@@ -1,21 +1,23 @@
 import java.util.Scanner;
 
-class uva10418{
-	public static void main(String args[]){
-		Scanner sc=new Scanner(System.in);
-		int T = 0, h, w;
+class p10418{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		int T=0, h, w;
 
 		while((sc.hasNext()) && (h=sc.nextInt())!=0 && (w=sc.nextInt())!=0){
-			if(T!=0) System.out.println();
+			if(T!=0) System.out.println("");
 
 			char field[][] = new char[105][105];
 
+			//先補 0
 			for(int i=1; i<=h; i++){
 				for(int j=1; j<=w; j++){
 					field[i][j] = '0';
 				}
 			}
 
+			//吃測資
 			for(int i=1; i<=h; i++){
 				String st = sc.next();
 				for(int j=1; j<=w; j++){
@@ -33,6 +35,8 @@ class uva10418{
 					}
 				}
 			}
+
+			//輸出資料 要注意是++T
 			System.out.println("Field #"+(++T)+":");
 			for(int i=1; i<=h; i++){
 				for(int j=1; j<=w; j++){
