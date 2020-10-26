@@ -1,0 +1,273 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Main<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10401<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10401",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10402<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10402",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10403<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10403",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10405<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10405",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10408<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10408",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10409<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10409",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10410<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10410",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10413<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10413",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10417<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10417",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10418<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10418",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10419<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10419",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10421<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10421",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10426<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10426",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10431<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10431",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10447<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10447",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10453<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10453",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10454<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10454",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10458<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10458",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10461<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10461",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10466<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10466",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10473<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10473",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10478<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10478",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10480<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10480",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10566<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10566",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p10567<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p10567",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p11019<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p11019",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p11020<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p11020",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p11067<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p11067",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p21914<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p21914",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p22131<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p22131",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p22811<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p22811",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p23551<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p23551",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p23621<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p23621",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-p23641<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "p23641",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-test<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "gpe_952bd5fc"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-uva118<gpe_952bd5fc>",
+            "request": "launch",
+            "mainClass": "uva118",
+            "projectName": "gpe_952bd5fc"
+        }
+    ]
+}

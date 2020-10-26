@@ -1,33 +1,32 @@
 import java.util.Scanner;
 
-public class P10104_EuclidProblem {
-  // This is a simple implementation of the extended euclidean algorithm
-  public static void main(String[] args) {
-    Scanner scn = new Scanner(System.in);
-    while (scn.hasNextInt()) {
-      int a = scn.nextInt();
-      int b = scn.nextInt();
+class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            
+            String str = sc.nextLine();
+            if(str.equals(".")) break;
 
-      int x = 0;
-      int y = 1;
-      int prev_x = 1;
-      int prev_y = 0;
-      while (b != 0) {
-        int q = a/b;
+            char c[] = str.toCharArray();
 
-        int tmp = b;
-        b = a%b;
-        a = tmp;
+            int len = str.length();
+            boolean flag = false;
 
-        int next_x = prev_x - q * x;
-        prev_x = x;
-        x = next_x;     
+            for(int i=1; i<=len; i++){
+                if(len%i != 0) continue;
+                flag = true;
+                for(int j=i; j<len && flag==true; j+=i){
+                    for(int k=0; k<i && flag==true; k++){
+                        if(c[k]!=c[j+k]) flag = false;
+                    }
+                }
 
-        int next_y = prev_y - q * y;
-        prev_y = y;
-        y = next_y;     
-      }
-      System.out.println(prev_x + " " + prev_y + " "  + a);
-    }             
-  }
+                if(flag){
+                    System.out.println(len/i);
+                    break;
+                }
+            }
+        }
+    }
 }
