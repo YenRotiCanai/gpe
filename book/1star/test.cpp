@@ -1,18 +1,24 @@
-#include <iostream>
-
+#include<iostream>
+#include<cstdio>
+#include<cstring>
 using namespace std;
 
 int main(){
-	int n;
-	cin >> n;
-	for(int i=1; i<=n; i++){
-		int x1, x2, y1, y2;
-		cin >> x1 >> y1 >> x2 >> y2;
-		int pos1, pos2;
-		pos1 = (x1+y1+1)*(x1+y1)/2+x1;
-		pos2 = (x2+y2+1)*(x2+y2)/2+x2;
+  string s1, s2;
+  int LCS[1005];
 
-		cout << "Case " << i << ": " << pos2-pos1 << endl;
-	}
-	return 0;
+  while( getline( cin, s1 ) ){
+    getline( cin, s2 );
+
+    memset( LCS, 0, sizeof(LCS) );
+    for( int i = 1 ; i <= s1.length() ; i++ ){
+      for( int j = s2.length() ; j >= 1 ; j-- )
+        if( s1[i-1] == s2[j-1] ) LCS[j] = LCS[j-1] + 1;
+      for( int j = 1 ; j <= s2.length() ; j++ ){
+        if( s1[i-1] != s2[j-1] ) LCS[j] = max( LCS[j], LCS[j-1] );
+      }
+    }
+    printf( "%d\n", LCS[s2.length()] );
+  }
+  return 0;
 }

@@ -1,3 +1,6 @@
+//https://github.com/fernandohbc/MyPCS/blob/master/uvaonlinejudge/src/volume_ci/P10104_EuclidProblem.java
+//看不懂他到底怎樣算的
+
 import java.util.Scanner;
 
 public class P10104_EuclidProblem {
