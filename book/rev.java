@@ -1,37 +1,39 @@
-import java.util.Scanner;
+import java.util.*;
 
 class rev{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        int run = 1;
-        
-        while(sc.hasNext()){
-            int correctLineCounts = sc.nextInt();
-            if(correctLineCounts == 0) break;
+        int N = Integer.parseInt(sc.nextLine());
+        boolean first = true;
 
+        while(N-->0){
+            if(!first) System.out.println();
             sc.nextLine();
-            String correct = "";
-            for(int i=0; i<correctLineCounts; i++){
-                correct += sc.nextLine()+"\n";
+
+            int M = Integer.parseInt(sc.nextLine());
+            int ans[] = new int[M+1];
+
+            for(int i=1; i<=M; i++){
+                StringTokenizer st = new StringTokenizer(sc.nextLine());
+
+                int a = Integer.parseInt(st.nextToken());
+                int b = Integer.parseInt(st.nextToken());
+                ans[i] = a+b;
             }
 
-            int submittedLineCounts = sc.nextInt();
-            sc.nextLine();
-            String submitted = "";
-            for(int i=0; i<submittedLineCounts; i++){
-                submitted += sc.nextLine()+"\n";
+            for(int i=M; i>0; i--){
+                ans[i-1] += ans[i] / 10;
+                ans[i] %= 10;
             }
 
-            String correctNumbers = correct.replaceAll("[^0-9]+","");
-            String submittedNumbers = submitted.replaceAll("[^0-9]+","");
-            
-            System.out.print("Run #"+run+": ");
-            if(correct.equals(submitted)) System.out.println("Accepted");
-            else if(correctNumbers.equals(submittedNumbers)) System.out.println("Presentation Error");
-            else System.out.println("Wrong Answer");
+            StringBuilder sb = new StringBuilder();
+            if(ans[0]!=0) sb.append(ans[0]);
 
-            run ++;
+            for(int i=1; i<=M; i++){
+                sb.append(ans[i]);
+            }
+            System.out.println(sb.toString());
+            first = false;
         }
-        sc.close();
     }
 }

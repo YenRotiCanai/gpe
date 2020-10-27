@@ -1,3 +1,5 @@
+//http://hellowalk.blogspot.com/2018/05/java-uva-10013-super-long-sums.html
+
 import java.util.*;
 
 public class temp {
