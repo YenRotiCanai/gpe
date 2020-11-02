@@ -1,25 +1,31 @@
+import java.io.*;
+import java.util.Arrays;
+import java.util.PriorityQueue;
 import java.util.Scanner;
-import java.math.BigInteger;
-
-class test{
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        int cases = 1;
-        while(sc.hasNext()){
-            int n = sc.nextInt();
-            int p = sc.nextInt();
-            if(n==0 && p==0) break;
-
-            BigInteger sum = BigInteger.ZERO;
-            while(n-->0){
-                sum = sum.add(sc.nextBigInteger());
+ 
+public class Main {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder out = new StringBuilder("");
+        Character c;
+        String line;
+        int d = 131071;
+        int mod;
+        while((line = br.readLine()) != null){
+            mod = 0;
+            while (!line.endsWith("#")) {
+                line += br.readLine();
             }
-
-            BigInteger ans = sum.divide(BigInteger.valueOf(p));
-
-            String ansString = ans.toString();
-            System.out.printf("Bill #%d costs %d: each friend should pay %d%n%n", cases, sum, ans);
-            cases ++;
+            for (int i = 0; i < line.length()-1; i++) {
+                c = line.charAt(i);
+                mod = (mod*2 + Integer.parseInt(c.toString())) % d;
+            }
+            if(mod == 0){
+                out.append("YES" +"\n");
+            }else{
+                out.append("NO" +"\n");
+            }
         }
+        System.out.print(out);
     }
 }

@@ -1,39 +1,29 @@
+import java.io.*;
 import java.util.*;
 
-class rev{
-    public static void main(String[] args){
+public class rev {
+    public static void main(String[] args) throws Throwable{
         Scanner sc = new Scanner(System.in);
-        int N = Integer.parseInt(sc.nextLine());
-        boolean first = true;
-
-        while(N-->0){
-            if(!first) System.out.println();
-            sc.nextLine();
-
-            int M = Integer.parseInt(sc.nextLine());
-            int ans[] = new int[M+1];
-
-            for(int i=1; i<=M; i++){
-                StringTokenizer st = new StringTokenizer(sc.nextLine());
-
-                int a = Integer.parseInt(st.nextToken());
-                int b = Integer.parseInt(st.nextToken());
-                ans[i] = a+b;
+        String str;
+        StringBuilder sb = new StringBuilder("");
+        int d = 131071;
+        int mod;
+        while(sc.hasNext()){
+            str = sc.nextLine();
+            mod = 0;
+            
+            while(!str.endsWith("#")){
+                str += sc.nextLine();
             }
 
-            for(int i=M; i>0; i--){
-                ans[i-1] += ans[i] / 10;
-                ans[i] %= 10;
+            for(int i=0; i<str.length()-1;i++){
+                Character c = str.charAt(i);
+                mod = (mod*2 + Integer.parseInt(c.toString())) % d;
             }
-
-            StringBuilder sb = new StringBuilder();
-            if(ans[0]!=0) sb.append(ans[0]);
-
-            for(int i=1; i<=M; i++){
-                sb.append(ans[i]);
-            }
-            System.out.println(sb.toString());
-            first = false;
+            if(mod==0) sb.append("Yes"+"\n");
+            else sb.append("No"+"\n");
+            System.out.print(sb);
         }
+        
     }
 }
