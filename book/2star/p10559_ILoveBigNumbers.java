@@ -21,5 +21,6 @@ class p10559_ILoveBigNumbers {
             }
             System.out.println(ans);
         }
+        sc.close();
     }
 }

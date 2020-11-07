@@ -1,16 +1,42 @@
-#include <stdio.h>
-#include <math.h>
-#define MIN(X,Y) ((X>Y)? Y:X)
-
+#include <iostream>
 using namespace std;
 
+int DigitSum(int n){
+	int sum = 0;
+	while(n>0){
+		sum+=(n%10);
+		n/=10;
+	}
+	return sum;
+}
+
+int FactorDigitSum(int n){
+	int sum = 0;
+	int tmp = n;
+	for(int i=2; i*i<=tmp; i++){
+		while(tmp%i==0){
+			tmp/=i;
+			sum+=DigitSum(i);
+		}
+	}
+	if(n!=tmp){
+		if(tmp!=1) sum+=DigitSum(tmp);
+		return sum;
+	}else return 0;
+}
+
 int main(){
-	double L, W;
-	double MaxX, MinX;
-	while(scanf("%lf %lf", &L, &W)==2){
-		MaxX = ((L+W)-sqrt(L*L-L*W+W*W))/6.0;
-		MinX = MIN(L,W)*0.5;
-		printf("%.3lf %.3lf %.3lf\n", MaxX+(1E-6), 0.0, MinX+(1E-6));
+	int t;
+	cin >> t;
+	while(t--){
+		int n;
+		cin >> n;
+		int ans = n+1;
+		while(1){
+			if(DigitSum(ans)==FactorDigitSum(ans)) break;
+			else ans++;
+		}
+		cout << ans << endl;
 	}
 	return 0;
 }
