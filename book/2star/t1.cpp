@@ -1,50 +1,53 @@
-#include <stdio.h>
-#include <string.h>
+#include <iostream>
+#include <string>
+#include <map>
+using namespace std;
 
-int m, n;
-char mm;
-char Map[110][110];
-bool Collected[110][110];
+int main(){
+	int T, first=1;
+	cin >> T;
 
-void CollectOil(int i, int j){
-	if(i<0 || j<0 || i>=m || j>=n) return;
-	else if(Map[i][j]=='*' || Collected[i][j]==true) return;
-	else{
-		Collected[i][j] = true;
-		CollectOil(i-1, j-1);
-		CollectOil(i-1, j);
-		CollectOil(i-1, j+1);
-		CollectOil(i, j-1);
-		CollectOil(i, j+1);
-		CollectOil(i+1, j-1);
-		CollectOil(i+1, j);
-		CollectOil(i+1, j+1);
-	}
-}
-
-int main(void){
-	scanf("%d %d", &n, &m);
-	while(n!=0 || m!=0){
+	while(T--){
+		int m, n;
+		cin >> m >> n;
+		map<char, char> parent;
+		string city1, city2;
 		for(int i=0; i<m; i++){
-			scanf("%s",Map[i]);
+			cin >> city1 >> city2;
+			parent[city2[0]] = city1[0]; //取第一個字母
 		}
-		for(int i=0; i<m; i++){
-			for(int j=0; j<n; j++){
-				Collected[i][j] = false;
-			}
-		}
-	}
+		
+		if(first==1) first=0;
+		else cout<<endl;
 
-	int Num = 0;
-	for(int i=0; i<m; i++){
-		for(int j=0; j<n; j++){
-			if(Map[i][j]=='@' && Collected[i][j]==false){
-				Num++;
-				CollectOil(i,j);
+		for(int q=0; q<n; q++){
+			cin >> city1 >> city2;
+			char route1[26], route2[26];
+			int p1=0, p2=0;
+			route1[0] = city1[0];
+			while(route1[p1]!='R'){
+				route1[p1+1] = parent[route1[p1]];
+				p1++;
 			}
+
+			route2[0] = city2[0];
+			while(route2[p2]!='R'){
+				route2[p2+1] = parent[route2[p2]];
+				p2++;
+			}
+
+			while(route1[p1]==route2[p2]){
+				p1--;
+				p2--;
+			}
+			for(int i=0; i<=p1+1; i++){
+				cout << route1[i];
+			}
+			for(int i=p2; i>=0; i--){
+				cout << route2[i];
+			}
+			cout << endl;
 		}
-		printf("%d\n", Num);
-		scanf("%d %d", &m, &n);
 	}
 	return 0;
 }
