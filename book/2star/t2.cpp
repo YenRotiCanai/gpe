@@ -1,49 +1,68 @@
-//https://knightzone.studio/2014/12/29/2471/uva%EF%BC%9A572%EF%BC%8Doil-deposits/
-
-#include <iostream>
-#include <cstdio>
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#define MAXN 200
 using namespace std;
 
-const int MAX_MAP_LIMIT = 100;
+int set[MAXN], number, flag;
+int adjList[MAXN][MAXN], num[MAXN];
 
-void visit(bool isVisited[][MAX_MAP_LIMIT+5], 
-           char map[][MAX_MAP_LIMIT+5],
-           int i, int j ){
-  if( map[i][j] == '@' && !isVisited[i][j] ){
-    isVisited[i][j] = true;
-    visit( isVisited, map, i-1, j );
-    visit( isVisited, map, i+1, j );
-    visit( isVisited, map, i, j+1 );
-    visit( isVisited, map, i, j-1 );
-    visit( isVisited, map, i+1, j-1 );
-    visit( isVisited, map, i+1, j+1 );
-    visit( isVisited, map, i-1, j-1 );
-    visit( isVisited, map, i-1, j+1 );
-  }
-
+void DFS(int lastNode)
+{
+    if(number>0&&flag)
+    {
+        for(int i=0; i<num[lastNode]; i++)
+        {
+            int neoSet = set[lastNode]*-1;
+            int nextNode = adjList[lastNode][i];
+            if(set[nextNode]==0)
+            {   //coloring
+                set[nextNode] = neoSet;
+                number--;
+                DFS(nextNode);
+            }
+            else
+            if(set[nextNode]!=neoSet)
+            {
+                //printf("s[%d]=%d s[%d]=%d\n",lastNode,set[lastNode],nextNode,set[nextNode]);
+                flag = 0;
+                break;
+            }
+        }
+    }
 }
 
-int main(){
-  int m, n;
-  while( scanf("%d%d", &m, &n) != EOF && m > 0 ){
-    char map[MAX_MAP_LIMIT+5][MAX_MAP_LIMIT+5] = {0};
-    gets(map[0]); // for '\n'
-    for( int i = 1 ; i <= m ; ++i ){
-      gets(map[i]+1);
-    }
+int main()
+{
+    int N;
+    while(scanf("%d",&N)!=EOF)
+    {
+        if(N==0)
+            break;
+        int m;
+        scanf("%d",&m);
 
-    bool isVisited[MAX_MAP_LIMIT+5][MAX_MAP_LIMIT+5] = {0};
-    int oilCount = 0;
-    for( int i = 1 ; i <= m ; ++i ){
-      for( int j = 1 ; j <= n ; ++j ){
-        if( map[i][j] == '@' && !isVisited[i][j] ){
-          ++oilCount;
-          visit( isVisited, map, i, j );
+        for(int i=0; i<N; i++)
+        {
+            set[i] = 0;
+            num[i] = 0;
         }
-      }
-    }
+        for(int i=0; i<m; i++)
+        {
+            int s,e;
+            scanf("%d %d",&s,&e);
+            adjList[s][num[s]++] = e;
+            adjList[e][num[e]++] = s;
+        }
 
-    printf("%d\n", oilCount);
-  }
-  return 0;
+        set[0] = 1;
+        number = N;
+        flag = 1;
+        DFS(0);
+
+        if(flag)
+            puts("BICOLORABLE.");
+        else
+            puts("NOT BICOLORABLE.");
+    }
 }

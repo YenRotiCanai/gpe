@@ -24,25 +24,35 @@ int main(){
 			cin >> city1 >> city2;
 			char route1[26], route2[26];
 			int p1=0, p2=0;
+
+
 			route1[0] = city1[0];
+			cout << "r1:" << route1[0] << endl;
 			while(route1[p1]!='R'){
 				route1[p1+1] = parent[route1[p1]];
+				cout << "r11:" << route1[p1+1];
 				p1++;
+				cout << ", p1:" << p1 <<endl;
 			}
 
 			route2[0] = city2[0];
+			cout << "r2:" << route2[0] << endl;
 			while(route2[p2]!='R'){
 				route2[p2+1] = parent[route2[p2]];
+				cout << "r21:" << route1[p2+1];
 				p2++;
+				cout << ", p2:" << p2 <<endl;
 			}
 
 			while(route1[p1]==route2[p2]){
 				p1--;
 				p2--;
 			}
+
 			for(int i=0; i<=p1+1; i++){
 				cout << route1[i];
 			}
+
 			for(int i=p2; i>=0; i--){
 				cout << route2[i];
 			}
