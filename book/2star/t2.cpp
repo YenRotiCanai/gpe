@@ -1,3 +1,5 @@
+//https://knightzone.studio/2014/12/29/2471/uva%EF%BC%9A572%EF%BC%8Doil-deposits/
+
 #include <iostream>
 #include <cstdio>
 using namespace std;
