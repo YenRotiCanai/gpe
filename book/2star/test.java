@@ -1,45 +1,56 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-class test {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        while(n-->0){
-            int j = sc.nextInt();
+public class Main  {
 
-            for(int k=j; ;k++){
-                boolean isPrime = true;
-                for(int l=2; l<k; l++){
-                    if(k%l == 0){
-                        isPrime = false;
-                        break;
-                    }
-                }
-                if(isPrime) continue;
-                else{
-                    String str1 = Integer.toString(k), str2 = "";
-                    int sum1 = 0, sum2 = 0;
-                    for(int i = 0; i<str1.length(); i++){
-                        sum1 += str1.charAt(i) - '0';
-                    }
-                    int tmp = k;
-                    for(int i=2; i<=tmp;){
-                        if(tmp % i == 0){
-                            str2 += Integer.toString(i);
-                            tmp /= i;
-                        }else{
-                            i++;
-                        }
-                    }
-                    for(int i=0; i<str2.length(); i++){
-                        sum2 += str2.charAt(i) - '0';
-                    }
-                    if(sum1==sum2){
-                        System.out.println(k);
-                        break;
-                    }
-                }
-            }
-        }
-    }
+	static int row, col;
+	static String grid[];
+	static boolean visited[][];
+
+	public static boolean valid(int r, int c) {
+		return ((r >= 0 && r < row) && (c >= 0 && c < col));
+	}
+
+	public static void floodFill(int r, int c) {
+		if (!valid(r, c) || grid[r].charAt(c) != '@' || visited[r][c])
+			return;
+		visited[r][c] = true;
+		floodFill(r + 1, c);
+		floodFill(r - 1, c);
+		floodFill(r, c + 1);
+		floodFill(r, c - 1);
+		floodFill(r + 1, c + 1);
+		floodFill(r + 1, c - 1);
+		floodFill(r - 1, c - 1);
+		floodFill(r - 1, c + 1);
+	}
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		String temp;
+		StringBuilder ans = new StringBuilder();
+		while ((temp = in.readLine()) != null) {
+			String[] x = temp.split(" ");
+			row = Integer.parseInt(x[0]);
+			col = Integer.parseInt(x[1]);
+			grid = new String[row];
+			visited = new boolean[row][col];
+			if (row == 0)
+				break;
+			for (int i = 0; i < row; i++)
+				grid[i] = in.readLine();
+			int cnt = 0;
+			for (int i = 0; i < row; i++) {
+				for (int j = 0; j < col; j++) {
+					if (!visited[i][j] && grid[i].charAt(j) == '@') {
+						cnt++;
+						floodFill(i, j);
+					}
+				}
+			}
+			ans.append(cnt).append("\n");
+		}
+		System.out.print(ans.toString());
+	}
 }

@@ -1,42 +1,50 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
+#include <string.h>
 
-int DigitSum(int n){
-	int sum = 0;
-	while(n>0){
-		sum+=(n%10);
-		n/=10;
+int m, n;
+char mm;
+char Map[110][110];
+bool Collected[110][110];
+
+void CollectOil(int i, int j){
+	if(i<0 || j<0 || i>=m || j>=n) return;
+	else if(Map[i][j]=='*' || Collected[i][j]==true) return;
+	else{
+		Collected[i][j] = true;
+		CollectOil(i-1, j-1);
+		CollectOil(i-1, j);
+		CollectOil(i-1, j+1);
+		CollectOil(i, j-1);
+		CollectOil(i, j+1);
+		CollectOil(i+1, j-1);
+		CollectOil(i+1, j);
+		CollectOil(i+1, j+1);
 	}
-	return sum;
 }
 
-int FactorDigitSum(int n){
-	int sum = 0;
-	int tmp = n;
-	for(int i=2; i*i<=tmp; i++){
-		while(tmp%i==0){
-			tmp/=i;
-			sum+=DigitSum(i);
+int main(void){
+	scanf("%d %d", &n, &m);
+	while(n!=0 || m!=0){
+		for(int i=0; i<m; i++){
+			scanf("%s",Map[i]);
+		}
+		for(int i=0; i<m; i++){
+			for(int j=0; j<n; j++){
+				Collected[i][j] = false;
+			}
 		}
 	}
-	if(n!=tmp){
-		if(tmp!=1) sum+=DigitSum(tmp);
-		return sum;
-	}else return 0;
-}
 
-int main(){
-	int t;
-	cin >> t;
-	while(t--){
-		int n;
-		cin >> n;
-		int ans = n+1;
-		while(1){
-			if(DigitSum(ans)==FactorDigitSum(ans)) break;
-			else ans++;
+	int Num = 0;
+	for(int i=0; i<m; i++){
+		for(int j=0; j<n; j++){
+			if(Map[i][j]=='@' && Collected[i][j]==false){
+				Num++;
+				CollectOil(i,j);
+			}
 		}
-		cout << ans << endl;
+		printf("%d\n", Num);
+		scanf("%d %d", &m, &n);
 	}
 	return 0;
 }
