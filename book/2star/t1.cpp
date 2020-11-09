@@ -1,63 +1,25 @@
 #include <iostream>
-#include <string>
 #include <map>
+#include <set>
 using namespace std;
 
 int main(){
-	int T, first=1;
-	cin >> T;
-
-	while(T--){
-		int m, n;
-		cin >> m >> n;
-		map<char, char> parent;
-		string city1, city2;
-		for(int i=0; i<m; i++){
-			cin >> city1 >> city2;
-			parent[city2[0]] = city1[0]; //取第一個字母
+	int n;
+	while(cin >> n, n){
+		map<set<int>,int> count;
+		int M = 0, MC = 0;
+		while(n--){
+			set<int> suit;
+			for(int m=0; m<5; m++){
+				int course;
+				cin >> course;
+				suit.insert(course);
+			}
+			count[suit]++;
+			int h = count[suit];
+			if(h==M) MC++;
+			if(h>M) M=h, MC=1;
 		}
-		
-		if(first==1) first=0;
-		else cout<<endl;
-
-		for(int q=0; q<n; q++){
-			cin >> city1 >> city2;
-			char route1[26], route2[26];
-			int p1=0, p2=0;
-
-
-			route1[0] = city1[0];
-			cout << "r1:" << route1[0] << endl;
-			while(route1[p1]!='R'){
-				route1[p1+1] = parent[route1[p1]];
-				cout << "r11:" << route1[p1+1];
-				p1++;
-				cout << ", p1:" << p1 <<endl;
-			}
-
-			route2[0] = city2[0];
-			cout << "r2:" << route2[0] << endl;
-			while(route2[p2]!='R'){
-				route2[p2+1] = parent[route2[p2]];
-				cout << "r21:" << route1[p2+1];
-				p2++;
-				cout << ", p2:" << p2 <<endl;
-			}
-
-			while(route1[p1]==route2[p2]){
-				p1--;
-				p2--;
-			}
-
-			for(int i=0; i<=p1+1; i++){
-				cout << route1[i];
-			}
-
-			for(int i=p2; i>=0; i--){
-				cout << route2[i];
-			}
-			cout << endl;
-		}
+		cout << M*MC << endl;
 	}
-	return 0;
 }
