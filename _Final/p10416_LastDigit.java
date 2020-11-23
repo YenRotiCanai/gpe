@@ -1,3 +1,5 @@
+package _Final;
+
 //https://a7069810.pixnet.net/blog/post/391085665-uva10162-last-digit
 
 import java.util.Scanner;

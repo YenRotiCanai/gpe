@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 class p11020{
 	public static void main(String[] args){
-		Scanner sc = new Scanner(System.in());
+		Scanner sc = new Scanner(System.in);
 		int table[][] = {
 			{0,1,1,1,0,0,1,1,1,1},
 			{0,1,1,1,0,0,1,1,1,0},
@@ -27,7 +27,7 @@ class p11020{
 			{1,1,0,0,0,0,0,0,0,0},
 		};
 
-		HashMap<Character, int[]> fingers = new Hashmap<Character, int[]>();
+		HashMap<Character, int[]> fingers = new HashMap<Character, int[]>();
 		fingers.put('c', table[0]);
 		fingers.put('d', table[1]);
 		fingers.put('e', table[2]);
@@ -53,7 +53,7 @@ class p11020{
 				String str = sc.nextLine();
 
 				for(int j=0; j<str.length(); j++){
-					int press[] = fingers.ger(str.charAt(j));
+					int press[] = fingers.get(str.charAt(j));
 					for(int k=0; k<10; k++){
 						count[k] += (now[k] < press[k]?1:0);
 						now[k] = press[k];
