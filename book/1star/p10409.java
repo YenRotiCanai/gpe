@@ -1,3 +1,5 @@
+//https://a7069810.pixnet.net/blog/post/391312900-%5Buva10057%5D-a-mid-summer-night%27s-dream
+
 import java.util.Scanner;
 
 class p10409{

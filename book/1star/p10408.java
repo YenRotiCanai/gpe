@@ -1,5 +1,13 @@
 //https://blog.xuite.net/b81621java/blog/134509857-10408%3A+What+is+the+Probability%3F
 
+/*
+當q小於1 求無窮等比級數和 q^n 趨近於零
+
+   s=a/(1-q)
+
+package _Final;
+*/
+
 import java.math.BigDecimal;
 import java.util.Scanner;
 
