@@ -4,28 +4,30 @@ import java.util.Arrays;
 class test {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
+        boolean newLine = false;
 
 		while(sc.hasNext()){
+
+			if(newLine) System.out.println();
 			
-			int cases = sc.nextInt();
-			int arr[] = new int[cases];
+			String s = sc.nextLine();
+			int arr[] = new int[130];
+			int max = 0;
 
-			for(int i=0; i<cases; i++){
-				arr[i] = sc.nextInt();
-			}
+			for(int i=0; i<s.length(); i++) arr[s.charAt(i)]++;
 
-			Arrays.sort(arr);
-
-			int mid = arr[(arr.length-1)/2];
-			int mid2 = arr[arr.length/2];
-
-			int count = 0;
 			for(int i=0; i<arr.length; i++){
-				if(arr[i] == mid || arr[i] == mid2) count++;
+				if(arr[i] > max) max = arr[i];
 			}
 
-			int D = mid2-mid+1;
-			System.out.println(mid + " " + count + " " + D);
+			for(int i=1; i<=max; i++){
+				for(int j=arr.length-1; j>=0; j--){
+					if(arr[j]==i) System.out.println(j+" "+arr[j]);
+				}
+			}
+
+			newLine = true;
+			
 		}
 
 		sc.close();
