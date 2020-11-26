@@ -15,7 +15,7 @@ class p10405{
 			}
 
 			boolean flag = true;
-			//如果只有一個cases，就不是 jolly 了
+			//如果只有一個cases，就是 jolly
 			if(cases!=1){
 				//算兩個差的絕對值後，放進陣列裡排序
 				int arrD[] = new int[cases-1];

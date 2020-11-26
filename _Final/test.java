@@ -1,30 +1,43 @@
 package _Final;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class test {
-    public static void main(String[] args) throws Throwable{
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-		int n = Integer.parseInt(sc.nextLine());
-		int len = 0;
-		int cT[] = new int[300];
-		String s;
-		char c;
-		while(n-->0){
-			s = sc.nextLine();
-			for(int i=0; i<s.length(); i++){
-				c = s.toUpperCase().charAt(i);
-				cT[c]++;
-				len++;
+
+		while(sc.hasNext()){
+			int cases = sc.nextInt();
+
+			int arr[] = new int[cases];
+			for(int i=0; i<cases; i++){
+				arr[i] = sc.nextInt();
 			}
+
+			boolean flag = true;
+
+			if(cases!=1){
+				int arrD[] = new int[cases-1];
+				for(int i=0; i<arr.length-1; i++){
+					arrD[i] = Math.abs(arr[i]-arr[i+1]);
+				}
+
+				Arrays.sort(arrD);
+
+				for(int i=0; i<arrD.length; i++){
+					if(arrD[i]!=i+1){
+						flag = false;
+						break;
+					}
+				}
+			}
+			if(flag) System.out.println("Jolly");
+			else System.out.println("Not jolly");
 		}
 
-		while(--len>0){
-			for( c = 'A'; c<='Z'; c++){
-				if(cT[c]==len) System.out.println(c+" "+len);
-			}
-		}		
-
 		sc.close();
-    }
+	}
+	
+	
 }

@@ -66,6 +66,6 @@ class p10658_IsBiggerSmarter{
         for(int i=0; i<solution.length; i++){
             System.out.println(solution[i]);
         }
-
+        sc.close();
     }
 }

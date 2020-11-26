@@ -13,6 +13,7 @@ class p10403{
 		}
 	}
 
+	//10進位轉2進位，並回傳有多少個1。
 	public static int base10(int n){
 		int count = 0;
 		while(n>0){

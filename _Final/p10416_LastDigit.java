@@ -55,5 +55,6 @@ public class p10416_LastDigit {
 
             System.out.println(ans);
         }
+        sc.close();
     }
 }

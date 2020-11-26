@@ -25,7 +25,7 @@ class Main{
 				if(arr[i] == len) System.out.println((char)i + " "+ len);
 			}
 		}
-
+		sc.close();
 		// System.out.println(Arrays.toString(arr));
 	}
 }
