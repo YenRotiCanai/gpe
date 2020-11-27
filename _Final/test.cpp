@@ -1,19 +1,28 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main(void)
+{
+    unsigned int i = 0, j = 0, cas = 0, max_num = 0, b = 0;
 
-int main(){
-    int sets, num, n, i;
-    double p, pi;
-    scanf("%d", &sets);
-
-    for(num = 0; num<sets; num++){
-    	scanf("%d %lf %d", &n, &p, &i);
-    	if(p<0.00001) printf("0.0000\n");
-    	else{
-    		pi = pow(1-p, i-1) * p/(1-pow(1-p,n));
-    		printf("%.4lf\n",pi);
-    	}
+    while (cin >> i >> j)
+    {
+        max_num = -1;
+        for (int a = min(i, j); a <= max(i, j); a++)
+        {
+            b = a;
+            cas = 1;
+            while (b > 1)
+            {
+                if (b % 2 == 1)
+                    b = 3 * b + 1;
+                else
+                    b /= 2;
+                cas++;
+            }
+            max_num = max(max_num, cas);
+        }
+        cout << i << " " << j << " " << max_num << endl;
     }
     return 0;
 }
