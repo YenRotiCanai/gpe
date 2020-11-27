@@ -1,50 +1,36 @@
 #include <iostream>
-#include <cstdio>
+#include <cstring>
+
 using namespace std;
 
-void print_number(long long n){
-    if(n==0) return;
+int main(){
+    char str[100][101];
+    int len[100];
+    int n=0, max=0;
 
-    if(n/10000000){
-        print_number(n/10000000);
-        printf(" kuti");
-        n %= 10000000;
+    for(int i=0; i<100; i++){
+        for(int j=0; j<101; j++){
+            str[i][j] = 0;
+        }
+        len[i] = 0;
     }
 
-    if(n/100000){
-        print_number(n/100000);
-        printf(" lakh");
-        n %= 100000;
+    while(cin.getline(str[n], 101)){
+        len[n] = strlen(str[n]);
+        if(len[n]>max) max = len[n];
+
+        for(int add=len[n]; add<max; add++){
+            str[n][add] = ' ';
+            len[n]++;
+        }
+        n++;
     }
 
-    if(n/1000){
-        print_number(n/1000);
-        printf(" hajar");
-        n %= 1000;
+    for(int j=0; j<max; j++){
+        for(int i=n-1; i>=0; i--){
+            if(j<len[i]) cout << str[i][j];
+        }
+        cout << endl;
     }
-
-    if(n/100){
-        print_number(n/100);
-        printf(" shata");
-        n %= 100;
-    }
-
-    if(n) printf(" %lld", n);
-}
-
-
-int main()
-{
-    long long n;
-    int num = 1;
-    while(scanf("%lld", &n)!=EOF){
-        printf("%4d.", num);
-
-        if(n) print_number(n);
-        else printf(" 0");
-
-        printf("\n");
-        num++;
-    }    
     return 0;
 }

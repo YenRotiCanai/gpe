@@ -17,14 +17,12 @@ class uva10279{
 			//讀取地圖
 			for(int j=0;j<n;j++){
 				String st=sc.next();
-				for(int k=0;k<n;k++) 
-					map[j][k]=st.charAt(k);
+				for(int k=0;k<n;k++) map[j][k]=st.charAt(k);
 			}
 			//讀取使用者所輸入的x
 			for(int j=0;j<n;j++){
 				String st=sc.next();
-				for(int k=0;k<n;k++) 
-					choose[j][k]=st.charAt(k);
+				for(int k=0;k<n;k++) choose[j][k]=st.charAt(k);
 			}
 			//計算點周圍的炸彈數
 			for(int j=0;j<n;j++){
@@ -40,21 +38,19 @@ class uva10279{
 			
 			//是否有踩到炸彈
 			boolean flag=true;
-			for(int j=0;j<n;j++)
-				for(int k=0;k<n;k++)
-					if(choose[j][k]=='x')
-						if(map[j][k]=='*')
-							flag=false;
+			for(int j=0;j<n;j++) for(int k=0;k<n;k++) if(choose[j][k]=='x') if(map[j][k]=='*') flag=false;
 			
 			//Output
 			for(int j=0;j<n;j++){
 				for(int k=0;k<n;k++){
-					if(choose[j][k]=='x' && map[j][k]!='*') 
-						System.out.print(aroundBomb[j][k]);
-					else if(!flag && map[j][k]=='*') 
-						System.out.print("*");
+					if(choose[j][k]=='x' && map[j][k]!='*') System.out.print(aroundBomb[j][k]);
+					else if(!flag && map[j][k]=='*') System.out.print("*");
 					else System.out.print(".");
+
+
 				}
+				System.out.println();
 			}
 		}
 	}
+}
