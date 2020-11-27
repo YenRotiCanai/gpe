@@ -1,3 +1,5 @@
+//https://a7069810.pixnet.net/blog/post/391893409-%5Buva490%5D-rotating-sentences
+
 import java.util.Scanner;
 import java.util.Vector;
 

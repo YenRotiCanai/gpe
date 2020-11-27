@@ -17,7 +17,7 @@ class main{
 				c2[s2.charAt(j)]++;
 			}
 
-			for(int k=79; k<=122; k++){
+			for(int k=97; k<=122; k++){
 				for(int num=1; num<=Math.min(c1[k], c2[k]); num++){
 					System.out.print((char)k);
 				}
