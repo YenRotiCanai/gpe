@@ -1,28 +1,50 @@
 #include <iostream>
-#include <algorithm>
+#include <cstdio>
 using namespace std;
-int main(void)
-{
-    unsigned int i = 0, j = 0, cas = 0, max_num = 0, b = 0;
 
-    while (cin >> i >> j)
-    {
-        max_num = -1;
-        for (int a = min(i, j); a <= max(i, j); a++)
-        {
-            b = a;
-            cas = 1;
-            while (b > 1)
-            {
-                if (b % 2 == 1)
-                    b = 3 * b + 1;
-                else
-                    b /= 2;
-                cas++;
-            }
-            max_num = max(max_num, cas);
-        }
-        cout << i << " " << j << " " << max_num << endl;
+void print_number(long long n){
+    if(n==0) return;
+
+    if(n/10000000){
+        print_number(n/10000000);
+        printf(" kuti");
+        n %= 10000000;
     }
+
+    if(n/100000){
+        print_number(n/100000);
+        printf(" lakh");
+        n %= 100000;
+    }
+
+    if(n/1000){
+        print_number(n/1000);
+        printf(" hajar");
+        n %= 1000;
+    }
+
+    if(n/100){
+        print_number(n/100);
+        printf(" shata");
+        n %= 100;
+    }
+
+    if(n) printf(" %lld", n);
+}
+
+
+int main()
+{
+    long long n;
+    int num = 1;
+    while(scanf("%lld", &n)!=EOF){
+        printf("%4d.", num);
+
+        if(n) print_number(n);
+        else printf(" 0");
+
+        printf("\n");
+        num++;
+    }    
     return 0;
 }

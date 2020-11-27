@@ -1,41 +1,24 @@
-import java.util.Scanner;
+import java.util.*;
 
 class test {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-
+        
         while(sc.hasNext()){
-        	long a = sc.nextLong();
-        	long b = sc.nextLong();
+            int n = sc.nextInt();
+            int arr[] = new int[n];
 
-        	System.out.print(a+" "+b+" ");
+            int count = 0;
 
-        	if(a>b){
-        		long c = a;
-        		a = b;
-        		b = c;
-        	}
+            for(int i=0; i<n; i++){
+                arr[i] = sc.nextInt();
 
-        	long maxLen = 0;
-        	for(long k=a; k<=b; k++){
-        		long n = k;
-        		long len = 1;
+                for(int j=i-1; j>=0; j--){
 
-        		while(true){
-        			if(n==1) break;
-        			if(n%2==1) n = 3*n+1;
-        			else n /= 2;
-
-        			len++;
-        		}
-
-        		//if(len>maxLen) maxLen = len;
-
-        		maxLen = Math.max(maxLen, len);
-        	}
-
-        	System.out.println(maxLen);
-        	
+                    if(arr[j] > arr[i]) count++;
+                }
+            }
+            System.out.println("Minimum exchange operations : "+count);
         }
-	}
+    }
 }
