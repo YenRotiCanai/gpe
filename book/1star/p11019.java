@@ -14,7 +14,7 @@ class p11019{
 				st = sc.next();
 
 				if(st.equals("north")){temp=top; top=s; s=down; down=n; n=temp;}
-				if(st.equals("south")){temp=top; top=n; s=down; down=s; s=temp;}
+				if(st.equals("south")){temp=top; top=n; n=down; down=s; s=temp;}
 				if(st.equals("east")){temp=top; top=w; w=down; down=e; e=temp;}
 				if(st.equals("west")){temp=top; top=e; e=down; down=w; w=temp;}
 			}
