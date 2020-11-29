@@ -1,4 +1,4 @@
-////https://a7069810.pixnet.net/blog/post/391270144-%5Buva10170%5D-the-hotel-with-infinite-rooms
+//https://a7069810.pixnet.net/blog/post/391270144-%5Buva10170%5D-the-hotel-with-infinite-rooms
 import java.util.*;
 
 class p10417 {
