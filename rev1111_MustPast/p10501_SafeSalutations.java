@@ -17,7 +17,9 @@ class Main{
 		int cases = 1;
 		while(sc.hasNext()){
 			int n = sc.nextInt();
+			
 			if(cases >1) System.out.println();
+			
 			System.out.println(p[n]);
 			cases++;
 		}
