@@ -1,3 +1,5 @@
+//https://a7069810.pixnet.net/blog/post/391634755-%5Buva10994%5D-simple-addition
+
 import java.util.Scanner;
 
 class uva10994{

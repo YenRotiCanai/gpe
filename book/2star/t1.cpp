@@ -1,25 +1,29 @@
 #include <iostream>
-#include <map>
-#include <set>
 using namespace std;
 
+int gcd(int a, int b){
+    while(a%=b) swap(a,b);
+    return b;
+}
+
 int main(){
-	int n;
-	while(cin >> n, n){
-		map<set<int>,int> count;
-		int M = 0, MC = 0;
-		while(n--){
-			set<int> suit;
-			for(int m=0; m<5; m++){
-				int course;
-				cin >> course;
-				suit.insert(course);
-			}
-			count[suit]++;
-			int h = count[suit];
-			if(h==M) MC++;
-			if(h>M) M=h, MC=1;
-		}
-		cout << M*MC << endl;
-	}
+    int v[1001];
+    while(cin >> v[0],v[0]){
+        int n=1, M, m;
+        M = m = v[0];
+
+        while(cin >> v[n], v[n]){
+            M = max(M, v[n]);
+            m = min(m, v[n]);
+            n++;
+        }
+
+        int g=M-m;
+        for(int k=0; k<n; k++){
+            g = gcd(v[k]-m , g);
+        }
+
+        cout << g << endl;
+    }
+    return 0;
 }
