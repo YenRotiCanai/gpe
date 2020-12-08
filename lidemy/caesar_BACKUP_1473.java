@@ -1,5 +1,6 @@
 import java.util.*;
 
+<<<<<<< HEAD
 // public class Main{
 // 	public static void main(String[] args){
 // 		Scanner sc = new Scanner(System.in);
@@ -22,17 +23,21 @@ import java.util.*;
 // 	}
 // }
 
-
+public class Main{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+=======
 class Main{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
 
+>>>>>>> 651db1c3ab194df4f1eae818071e2dfb3c7968f5
 		int n = Integer.parseInt(sc.nextLine());
 		String s1 = sc.nextLine();
 		String s2 = "";
 
 		for(int i=0; i<s1.length(); i++){
-
+<<<<<<< HEAD
 			char c = (char)(s1.charAt(i)-'a');
 			System.out.println(c);
 			c = (char)((c+n)%26);
@@ -40,14 +45,16 @@ class Main{
 			
 		}
 		System.out.println(s2);		
+=======
 			int a = s1.charAt(i)-97;
 			int b = (a+n)%26;
 			char c = (char)(b+97);
 			s2+=c;
 
 			//System.out.printf("i:%d, a:%d, b:%d, c:%c, s2:%s%n",i,a,b,c,s2);
-		
+		}
 
 		System.out.println(s2);
+>>>>>>> 651db1c3ab194df4f1eae818071e2dfb3c7968f5
 	}
 }

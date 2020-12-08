@@ -1,36 +1,92 @@
-#include <iostream>
-#include <cstring>
+#include<iostream>
+
+#include<cstdlib>
+
+#include<cmath>
+
+#include<cstring>
+
+#include<memory.h>
+
+#include<algorithm>
+
+#include<string.h>
+
+#include<stdio.h>
 
 using namespace std;
 
-int main(){
-    char str[100][101];
-    int len[100];
-    int n=0, max=0;
+int row,col;
 
-    for(int i=0; i<100; i++){
-        for(int j=0; j<101; j++){
-            str[i][j] = 0;
-        }
-        len[i] = 0;
+int range;
+
+char G[101][101]={0},visit[101][101]={0};
+
+void dfs(int x,int y)
+
+{
+
+   //  printf("%d,%d\n",x,y);
+
+   //  system("pause");
+
+     if(x<0||y<0||x>=row||y>=col||visit[x][y]=='1'||G[x][y]=='1')return;
+
+     visit[x][y]='1';
+
+     range++;
+
+     dfs(x,y-1);
+
+     dfs(x-1,y);
+
+     dfs(x,y+1);
+
+     dfs(x+1,y);
+
+     return;
+
+ }
+
+int main()
+
+{
+    int n;
+
+    int i,j;
+
+    int x,y;
+
+    cin>>n;
+
+    for(;n>0;n--)
+
+    {
+
+    range=0;
+
+    row=0;
+
+    cin>>x>>y;
+
+    memset(G,0,sizeof(G));
+
+    memset(visit,0,sizeof(visit));
+
+    getchar();
+
+    while(gets(G[row])&&G[row][0])row++;
+
+    col=strlen(G[row-1]);
+
+    //cout<<" "<<row<<" "<<col<<endl;
+
+    dfs(x-1,y-1);
+
+    cout<<range<<endl;
+
+    if(n-1>0)cout<<endl;
+
     }
-
-    while(cin.getline(str[n], 101)){
-        len[n] = strlen(str[n]);
-        if(len[n]>max) max = len[n];
-
-        for(int add=len[n]; add<max; add++){
-            str[n][add] = ' ';
-            len[n]++;
-        }
-        n++;
-    }
-
-    for(int j=0; j<max; j++){
-        for(int i=n-1; i>=0; i--){
-            if(j<len[i]) cout << str[i][j];
-        }
-        cout << endl;
-    }
-    return 0;
+    return 0;  
 }
