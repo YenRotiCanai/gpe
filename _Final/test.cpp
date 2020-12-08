@@ -1,40 +1,92 @@
-#include <cstdio>
-#include <cstring>
+#include<iostream>
 
-char g[105][105], used[105][105];
-int n, m, res;
+#include<cstdlib>
 
-void dfs(int x, int y){
-    if(x<0 || y<0 || x>=n || y>=m) return;
+#include<cmath>
 
-    if(g[x][y] == '1' || used[x][y]) return;
+#include<cstring>
 
-    used[x][y] = 1;
-    res++;
-    dfs(x+1, y);
-    dfs(x-1, y);
-    dfs(x, y+1);
-    dfs(x, y-1);
-}
+#include<memory.h>
 
-int main(){
-    int t, x, y;
-    scanf("%d",&t);
-    while(getchar()!='\n');
-    gets(g[0]);
+#include<algorithm>
 
-    while(t--){
-        gets(g[0]);
-        memset(used, 0, sizeof(used));
-        sscanf(g[0], "%d %d", &x, &y);
-        n = 0, m;
-        while(gets(g[n]) && g[n][0]) n++;
+#include<string.h>
 
-        m = strlen(g[0]);
-        res = 0;
-        dfs(x-1, y-1);
-        printf("%d\n", res);
-        if(t) puts("");
+#include<stdio.h>
+
+using namespace std;
+
+int row,col;
+
+int range;
+
+char G[101][101]={0},visit[101][101]={0};
+
+void dfs(int x,int y)
+
+{
+
+   //  printf("%d,%d\n",x,y);
+
+   //  system("pause");
+
+     if(x<0||y<0||x>=row||y>=col||visit[x][y]=='1'||G[x][y]=='1')return;
+
+     visit[x][y]='1';
+
+     range++;
+
+     dfs(x,y-1);
+
+     dfs(x-1,y);
+
+     dfs(x,y+1);
+
+     dfs(x+1,y);
+
+     return;
+
+ }
+
+int main()
+
+{
+    int n;
+
+    int i,j;
+
+    int x,y;
+
+    cin>>n;
+
+    for(;n>0;n--)
+
+    {
+
+    range=0;
+
+    row=0;
+
+    cin>>x>>y;
+
+    memset(G,0,sizeof(G));
+
+    memset(visit,0,sizeof(visit));
+
+    getchar();
+
+    while(gets(G[row])&&G[row][0])row++;
+
+    col=strlen(G[row-1]);
+
+    //cout<<" "<<row<<" "<<col<<endl;
+
+    dfs(x-1,y-1);
+
+    cout<<range<<endl;
+
+    if(n-1>0)cout<<endl;
+
     }
-    return 0;
+    return 0;  
 }
