@@ -43,6 +43,30 @@ int main(){
 
         cin >> x >> y;
 
+        memset(G,0,sizeof(G)); //初始化陣列為 0
+
+        memset(visit,0,sizeof(visit)); //初始化陣列為 0
+
+        getchar();//吃掉一空行
+
+        while(gets(G[row]) && G[row][0]) {
+            cout << "G[row]:" << G[row] << ", [0]:" << G[row][0] << endl;
+
+            row++;
+        }
+
+        cout << G[1][0] << endl;
+        cout << row << endl;
+
+        col = strlen(G[row-1]);
+
+        dfs(x-1, y-1);
+
+        cout << range << endl;
+
+        if(n-1>0) cout << endl;
+
     }
+    return 0;
 
 }
