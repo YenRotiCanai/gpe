@@ -1,14 +1,12 @@
-#include <cstdio>
-#include <cstring>
-
+#include <stdio.h>
+#include <string.h>
 char g[105][105], used[105][105];
 int n, m, res;
-
-void dfs(int x, int y){
-    if(x<0 || y<0 || x>=n || y>=m) return;
-
-    if(g[x][y] == '1' || used[x][y]) return;
-
+void dfs(int x, int y) {
+    if(x < 0 || y < 0 || x >= n || y >= m)
+        return;
+    if(g[x][y] == '1' || used[x][y])
+        return;
     used[x][y] = 1;
     res++;
     dfs(x+1, y);
@@ -16,25 +14,24 @@ void dfs(int x, int y){
     dfs(x, y+1);
     dfs(x, y-1);
 }
-
-int main(){
+int main() {
     int t, x, y;
-    scanf("%d",&t);
-    while(getchar()!='\n');
+    scanf("%d", &t);
+    while(getchar() != '\n');
     gets(g[0]);
-
-    while(t--){
+    while(t--) {
         gets(g[0]);
         memset(used, 0, sizeof(used));
         sscanf(g[0], "%d %d", &x, &y);
         n = 0, m;
-        while(gets(g[n]) && g[n][0]) n++;
-
+        while(gets(g[n]) && g[n][0])
+            n++;
         m = strlen(g[0]);
         res = 0;
         dfs(x-1, y-1);
         printf("%d\n", res);
-        if(t) puts("");
+        if(t)
+            puts("");
     }
     return 0;
 }
