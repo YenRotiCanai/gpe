@@ -1,92 +1,30 @@
-#include<iostream>
-
-#include<cstdlib>
-
-#include<cmath>
-
-#include<cstring>
-
-#include<memory.h>
-
-#include<algorithm>
-
-#include<string.h>
-
-#include<stdio.h>
-
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
 using namespace std;
 
-int row,col;
+int main() {
+  int m, n, t;
+  while (scanf("%d%d%d", &m, &n, &t) != EOF) {
+    int minBurgerTime = min(m, n);
+    int maxBurgerTime = max(m, n);
 
-int range;
+    int maxBurgerAmount = t / minBurgerTime;
+    int remainingTime = t - maxBurgerAmount * minBurgerTime;
+    for (int i = maxBurgerAmount - 1 ; i >= 0 && remainingTime != 0 ; --i) {
+      int currentRemainingTime = t - i * minBurgerTime;
+      int anotherBurgerAmount = currentRemainingTime / maxBurgerTime;
+      currentRemainingTime -= anotherBurgerAmount * maxBurgerTime;
 
-char G[101][101]={0},visit[101][101]={0};
-
-void dfs(int x,int y)
-
-{
-
-   //  printf("%d,%d\n",x,y);
-
-   //  system("pause");
-
-     if(x<0||y<0||x>=row||y>=col||visit[x][y]=='1'||G[x][y]=='1')return;
-
-     visit[x][y]='1';
-
-     range++;
-
-     dfs(x,y-1);
-
-     dfs(x-1,y);
-
-     dfs(x,y+1);
-
-     dfs(x+1,y);
-
-     return;
-
- }
-
-int main()
-
-{
-    int n;
-
-    int i,j;
-
-    int x,y;
-
-    cin>>n;
-
-    for(;n>0;n--)
-
-    {
-
-    range=0;
-
-    row=0;
-
-    cin>>x>>y;
-
-    memset(G,0,sizeof(G));
-
-    memset(visit,0,sizeof(visit));
-
-    getchar();
-
-    while(gets(G[row])&&G[row][0])row++;
-
-    col=strlen(G[row-1]);
-
-    //cout<<" "<<row<<" "<<col<<endl;
-
-    dfs(x-1,y-1);
-
-    cout<<range<<endl;
-
-    if(n-1>0)cout<<endl;
-
+      if (currentRemainingTime < remainingTime) {
+        maxBurgerAmount = i + anotherBurgerAmount;
+        remainingTime = currentRemainingTime;
+      }
     }
-    return 0;  
+
+    printf("%d", maxBurgerAmount);
+    if (remainingTime > 0) printf(" %d", remainingTime);
+    printf("\n");
+  }
+  return 0;
 }
