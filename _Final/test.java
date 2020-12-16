@@ -4,23 +4,21 @@ class test {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        ArrayList<Integer> prime = new ArrayList<Integer>();
+        while(sc.hasNext()){
+            boolean first = true;
+            long N_M = sc.nextLong();
 
-        for(int i=2; i<=n; i++){
-            if(primeCheck(i)){
-                prime.add(i);
+            if(N_M == 0) break;
+
+            for(int i=9; i>=0; i--){
+                if((N_M - i) % 9 == 0){
+                    if(!first) System.out.print(" ");
+
+                    System.out.print((N_M-i) / 9 * 10 + i);
+                    first = false;
+                }
             }
+            System.out.println();
         }
-        
-        System.out.println(prime);
-    }
-
-    public static Boolean primeCheck(int n){
-        if(n==1) return false;
-        for(int i=2; i<n; i++){
-            if(n%i==0) return false;
-        }
-        return true;
     }
 }

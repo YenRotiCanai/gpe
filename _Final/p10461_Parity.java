@@ -1,3 +1,5 @@
+//找出有多少個 '1'
+
 import java.util.*;
 
 class p10461 {

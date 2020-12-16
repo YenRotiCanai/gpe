@@ -6,7 +6,6 @@ class test{
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
         BigInteger sum, tmp;
-        BigInteger sum, tmp;
         int N, A;
 
         while(sc.hasNext()){

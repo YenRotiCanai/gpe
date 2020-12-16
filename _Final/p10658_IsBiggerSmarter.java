@@ -13,6 +13,7 @@ class p10658_IsBiggerSmarter{
             return this.weight-e.weight;
         }
     }
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ArrayList<Elephant> list = new ArrayList<>();

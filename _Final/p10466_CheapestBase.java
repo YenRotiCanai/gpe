@@ -30,7 +30,7 @@ class p10466 {
         		//進位值轉換，從 2 到 36
         		for(int j=2; j<37; j++){
         			for(int k=0; k<changeSize; k++){
-        				int changeTmp = change[i];
+        				int changeTmp = change[k];
         				while(changeTmp>0){
         					int tmp = changeTmp % j;
         					changeTmp /= j;
