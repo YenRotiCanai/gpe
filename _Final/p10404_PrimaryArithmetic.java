@@ -16,8 +16,11 @@ class p10404 {
         	int cSum = 0;
 
         	while(a!=0 || b!=0){
+                //拿兩個的個位數
         		int tmpA = a%10;
         		int tmpB = b%10;
+
+                //個位數相加
         		int tmpSum = tmpA+tmpB;
 
         		if(carry){
