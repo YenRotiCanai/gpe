@@ -1,5 +1,5 @@
 //https://blog.xuite.net/b81621java/blog/147444520-10517%3A+Hartals
-
+//天數 mod 日期，如果 ==0，就++
 import java.util.*;
 
 class p10517 {
