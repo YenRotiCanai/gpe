@@ -1,30 +1,20 @@
-//http://diadoacm.blogspot.com/2013/02/acm-10162-last-digit.html
+#include<iostream>
+#include<cstdio>
+using namespace std;
 
-#include <cstdio>
-#include <cstring>
+int main(){
+  long long dp[30005] = {1};
+  int money[] = { 10000, 5000, 2000, 1000, 500,
+                  200, 100, 50, 20, 10, 5 };
+  int part1, part2;
 
-int table[2][10] = {
-    {0,1,4,7,6,5,6,3,6,9},
-    {0,1,6,3,6,5,6,7,4,9}
-};
+  for( int i = 10 ; i >= 0 ; i-- )
+    for( int j = money[i] ; j <= 30000 ; j++ )
+      dp[j] += dp[j-money[i]];
 
-int main(void){
-    int i, result, tens, len;
-    char s[101+1];
+  while( scanf( "%d.%d", &part1, &part2 ) != EOF &&
+         !( part1 == 0 && part2 == 0 ) )
+    printf( "%3d.%02d%17lld\n", part1, part2, dp[part1*100+part2] );
 
-    while(scanf("%s", &s) == 1 && !(s[0]=='0' && s[1]=='\0')){
-        len = strlen(s);
-
-        if(len >= 2) tens = s[len-2]-'0';
-        else tens = 0;
-
-        result = tens*7;
-
-        for(i=1; i<=s[len-1]-'0'; i++){
-            result += table[tens%2][i];
-        }
-
-        printf("%d\n", result%10);
-    }
-    return 0;
+  return 0;
 }
