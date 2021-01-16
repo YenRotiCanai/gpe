@@ -1,45 +1,64 @@
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
-class FFtest{
+public class RoadsInTheNorth {
+ static boolean[] visited;
+ static ArrayList<edge>[] list;
+ static int max, res;
 
-	public static void main(String[] args){
-		Scanner sc = new Scanner(System.in);
-		Vector<String> vector = new Vector<String>();
+ public static void dfs(int i, int cost) {
+  visited[i] = true;
+  if (cost > max) {
+   max = cost;
+   res = i;
+  }
+  for (edge x : list[i])
+   if (!visited[x.i])
+    dfs(x.i, cost + x.cost);
+ }
 
-		int cases = 0;
-		int maxLength = 0;
+ public static void main(String[] args) throws IOException {
+  BufferedReader b = new BufferedReader(new InputStreamReader(System.in));
+  while (b.ready()) {
+   list = new ArrayList[10000];
+   for (int i = 0; i < 10000; i++) 
+    list[i]=new ArrayList<edge>();
+   visited = new boolean[10000];
+   boolean[] found=new boolean[10000];
+   while (b.ready()) {
+    String s = b.readLine();
+    if (s.equals(""))
+     break;
+    String[] temp = s.split(" ");
+    int a = Integer.parseInt(temp[0]);
+    int bb = Integer.parseInt(temp[1]);
+    int c = Integer.parseInt(temp[2]);
+    list[a - 1].add(new edge(bb-1, c));
+    list[bb - 1].add(new edge(a-1, c));
+    found[a-1]=found[bb-1]=true;
+   }
+   max=res=0;
+   for (int i = 0; i < 10000; i++) 
+    if(found[i]){
+     dfs(i, 0);
+     break;
+    }
+   max=0;
+   visited=new boolean[10000];
+   dfs(res, 0);
+   System.out.println(max);
+  }
 
-		while(sc.hasNextLine()){
-			String str = sc.nextLine();
+ }
 
-			if(str.length() > maxLength) maxLength = str.length();
+ static class edge {
+  int i, cost;
 
-			vector.add(str);
-			cases++;
-		}
-
-		int spaceCount = 0;
-
-		//從每行開頭的第一個字開始
-		for(int i=0; i<maxLength; i++){
-			spaceCount = 0;
-
-			//從最後一筆開始抓
-			for(int j=cases-1; j>=0; j--){
-				if(!(i > vector.get(j).length())){ //如果已經抓到超出這一行的長度了，也就是說這一行已經結束，就跳出if
-					//印出空白
-					while(spaceCount > 0){
-						System.out.print(" ");
-						spaceCount--;
-					}
-					System.out.print(vector.get(j).charAt(i));
-					spaceCount = 0;
-				}else{
-					spaceCount++;
-				}
-			}
-			System.out.println();
-		}
-
-	}
+  public edge(int i, int cost) {
+   this.i = i;
+   this.cost = cost;
+  }
+ }
 }
