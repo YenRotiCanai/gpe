@@ -1,3 +1,5 @@
+//https://mypaper.pchome.com.tw/zerojudge/post/1326963460
+
 #include<cstdio>
 #include<cmath>
 
