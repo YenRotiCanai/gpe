@@ -19,7 +19,7 @@ int main(){
     for(int i=3; i<35000; i+=2){
         int tmp = prime[i];
         
-        if(tmp==0) continue;
+        if(tmp==0) continue; //如果裡面是 0 就代表他這位置不是質數，可以跳下一輪
 
         for(int j = i+tmp; j<35000; j+=tmp){
             prime[j] = 0;
