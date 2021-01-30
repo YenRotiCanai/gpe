@@ -1,31 +1,36 @@
 #include <iostream>
-#include <map>
 
 using namespace std;
 
 int main(){
-
-	map<string, int> country;
-	map<string, int>::iterator iter;
+	string s1, s2;
 	
-	int cases;
+	while(cin >> s1 >> s2){
 
-	string str;
-	char others[76];
-	
-	cin >> cases;
-	cin.ignore();
+		char c1[150], c2[150];
+		char curr;
 
-	while(cases--){
-		cin >> str;
-		country[str]++;
-		
-		cin.getline(others, 76);
+		for(int i=0; i<s1.length(); i++){
+			curr = s1[i];
+			cout << s1[i] << endl;
+			cout <<"curr:"<< curr << endl;
+			c1[curr]++;
+		}
+		for(int i=0; i<s2.length(); i++){
+			curr = s2[i];
+			c2[curr]++;
+		}
+
+		for(char c='a'; c<='z'; c++){
+			cout << c1[c] << " ";
+		}
+		cout << endl;
+
+		// for(char c='a'; c<='z'; c++){
+		// 	for(int k=1; k<=min(c1[c], c2[c]); k++){
+		// 		cout << c;
+		// 	}
+		// }
+		cout << endl;
 	}
-
-	for(iter = country.begin(); iter != country.end(); iter++){
-		cout << iter->first << " ";
-		cout << iter->second << endl;
-	}
-
 }
