@@ -3,20 +3,13 @@ import java.util.*;
 class Main{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
-        boolean first = true;
 
         while(sc.hasNext()){
-            String str = sc.nextLine();
-            
+            long n = sc.nextLong();
+            if(n==0) break;
+            long m = (long)Math.sqrt(n);
 
-            while(str.contains("\"")){
-                if(first) str = str.replaceFirst("\"", "``");
-                else str = str.replaceFirst("\"", "''");
-
-                first = !first;
-            }
-
-            System.out.println(str);
+            System.out.println(m*m == n? "yes":"no");
         }
 	}
 }

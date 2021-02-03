@@ -1,3 +1,4 @@
+//https://hwchen18546.wordpress.com/2014/03/03/acm-10502product-of-digits/
 #include <stdio.h>
 #include <string.h>
 using namespace std;

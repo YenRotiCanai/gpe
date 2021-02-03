@@ -1,17 +1,11 @@
 #include <iostream>
-
+#include <cmath>
 using namespace std;
 
 int main(){
-	
-	char c, k=0;
-	while(cin.get(c)){
-		if(c!='"') cout << c;
-		else if(k % 2){
-            cout << "``";
-            k++;
-        }
-		else cout << "''";
-	}
-
+    long n;
+	while(cin >> n && n!=0){
+        long m = (long)sqrt(n);
+        cout << (m*m==n? "yes":"no") << endl;
+    }
 }
