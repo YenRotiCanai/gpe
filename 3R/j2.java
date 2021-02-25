@@ -3,24 +3,23 @@ import java.util.*;
 class Main{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
-        int cases = sc.nextInt();
-        while(cases-->0){
-            int n = sc.nextInt();
-            sc.nextLine();
-            int arr[] = new int[n+1];
-
-            String str = sc.nextLine();
+        while(sc.hasNext()){
+            int p = sc.nextInt();
+            int q = sc.nextInt();
             int sum = 0;
-            for(int i=1; i<=n; i++){
-                if(str.equals("LEFT")) arr[i] = -1;
-                else if(str.equals("RIGHT")) arr[i] = 1;
-                else{
-                    int tmp = str.substring(8);
-                    arr[i] = arr[tmp];
-                }
-                sum += arr[i];
+
+            if(p<0 && q<0) break;
+
+            for(int i=p; i<=q; i++){
+                sum += F(i);
             }
             System.out.println(sum);
         }
 	}
+
+    static int F(int n){
+        if(n==0) return 0;
+        else if(n%10 > 0) return n%10;
+        else return F(n/10);
+    }
 }
