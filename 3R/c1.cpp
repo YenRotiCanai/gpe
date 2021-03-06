@@ -1,33 +1,37 @@
-#include <iostream>
-
+#include <cstdio>
+#include <queue>
 using namespace std;
 
-int LIS(int n, int arr[]){
-    
-    int length[n]; //記錄每一個數字的LIS長度
-    for(int i=0; i<n; i++){
-        length[i] = 1; //預設每一個的長度都是 1，也就是只有他自己一個
-    }
+#define MAX 35
 
-    int L = 0;
-    for(int i=0; i<n; i++){
-        for(int j=0; j<i; j++){
-            if(arr[j]<arr[i]) length[i] = max(length[i],length[j]+1);
-        }
-        if(L < length[i]) L = length[i];
-    }
-    
-    return L;
-}
+//宣告地城大小和距離
+char dungeon[MAX][MAX][MAX];
+int distance[MAX][MAX][MAX];
+int L, R, C; //輸入：L（層數），R（橫排/行），C（直排/列）
+//走的方向
+const int direction[6][3] = {{-1,0,0},{1,0,0},{0,-1,0},{0,1,0},{0,0,-1},{0,0,1}};
+
+//宣告一個資料結構
+struct loc{
+    int x; int y; int z;
+};
 
 int main(){
-    int n, ans=0;
-    while(cin >> n && n){
-        int arr[n];
-        for(int i=0; i<n; i++){
-            cin >> arr[i];
+    while(scanf("%d%d%d", &L, &R, &C)){
+        if(!L && !R && !C) break;
+        int start_i, start_j, start_k;
+
+        for(int i=0; i<L; i++){
+            for(int j=0; j<R; j++){
+                scanf("%s", dungeon[i][j]);
+                for(int k=0; k<C; k++){
+                    if(dungeon[i][j][k]=='S'){
+                        start_i = i;
+                        start_j = j;
+                        start_k = k;
+                    }
+                }
+            }
         }
-        ans = LIS(n, arr);
-        cout << ans << endl;
     }
 }
