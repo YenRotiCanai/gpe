@@ -1,37 +1,32 @@
-#include <cstdio>
-#include <queue>
+#include <iostream>
+
 using namespace std;
 
-#define MAX 35
-
-//宣告地城大小和距離
-char dungeon[MAX][MAX][MAX];
-int distance[MAX][MAX][MAX];
-int L, R, C; //輸入：L（層數），R（橫排/行），C（直排/列）
-//走的方向
-const int direction[6][3] = {{-1,0,0},{1,0,0},{0,-1,0},{0,1,0},{0,0,-1},{0,0,1}};
-
-//宣告一個資料結構
-struct loc{
-    int x; int y; int z;
-};
-
 int main(){
-    while(scanf("%d%d%d", &L, &R, &C)){
-        if(!L && !R && !C) break;
-        int start_i, start_j, start_k;
+    //宣告一週的英文名字
+    char week[7][10]={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+    
+    //宣告每個月有多少天,因為閏年（leap years）所以2月是28天
+    int month_days[]={31,28,31,30,31,30,31,31,30,31,30,31};
 
-        for(int i=0; i<L; i++){
-            for(int j=0; j<R; j++){
-                scanf("%s", dungeon[i][j]);
-                for(int k=0; k<C; k++){
-                    if(dungeon[i][j][k]=='S'){
-                        start_i = i;
-                        start_j = j;
-                        start_k = k;
-                    }
-                }
-            }
+    int n;
+    cin >> n; //case數量
+    while(n--){
+        int month, day;
+        cin >> month >> day;
+
+        //根據測資推算，去年最後一天是禮拜五，而禮拜五在week裡面排第五個，所以就給他 5
+        int w=5; 
+
+        //這邊 i 給 1，這樣如果是 1 月的話，它就會因為限制條件而進不去，所以不會加到1月的全部天數
+        //會直接跳過迴圈做下一步
+        for(int i=1; i<month; i++){
+            w += month_days[i-1];
         }
+
+        //把加總好的月份天數加上測資的天數，然後 mod 7 找出禮拜幾
+        w = (w+day)%7;
+
+        cout << week[w] << endl;
     }
 }

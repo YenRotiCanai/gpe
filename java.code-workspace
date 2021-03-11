@@ -4,5 +4,13 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"istream": "cpp",
+			"string": "cpp",
+			"iosfwd": "cpp",
+			"algorithm": "cpp",
+			"iostream": "cpp"
+		}
+	}
 }
