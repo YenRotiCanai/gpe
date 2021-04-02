@@ -4,34 +4,30 @@ class Main{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
         
-        while(sc.hasNext()){
-            int n = sc.nextInt();
+       while(sc.hasNext()){
+           String st = sc.next();
 
-            if(prime(n)){
-                StringBuilder sb = new StringBuilder(n+""); //建新的字串時後面要加 “”
-                sb.reverse(); //反轉字串
+           if(st.equals("0")) break;
 
-                //將反轉後的變成 int
-                int rn = Integer.parseInt(sb.toString());
+           int degree = 0;
+           String tmp = st;
 
-                //判斷開始
-                if(rn == n) System.out.println(n + " is prime.");
-                else{
-                    if(prime(rn)) System.out.println(n + " is emirp.");
-                    else System.out.println(n + " is prime.");
-                }
-            }else System.out.println(n + " is not prime.");
-        }
+           while(true){
+               int total = 0;
+
+               for(int i=0; i<tmp.length(); i++){
+                   total += tmp.charAt(i) - 48;
+               }
+
+               if(total % 9 == 0){
+                   degree ++;
+                   if(total == 9) break;
+                   else tmp = Integer.toString(total);
+               }else break;
+           }
+
+           if(degree != 0) System.out.println(st + " is a multiple of 9 and has 9-degree " + degree + ".");
+           else System.out.println(st + " is not a multiple of 9.");
+       }
 	}
-
-    //判斷他是不是 prime
-    static boolean prime(int n){
-        int sqn = (int)Math.sqrt(n);
-
-        //從 2 一直到 sqrt(n)
-        for(int i=2; i<=sqn; i++){
-            if(n % i == 0) return false;
-        }
-        return true;
-    }
 }
