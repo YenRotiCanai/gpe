@@ -5,23 +5,32 @@ import java.util.*;
 class Main{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
-        
-		int n = Integer.parseInt(sc.nextLine());
-		int s1, s2;
+		
+		while(sc.hasNext()){
+			String st = sc.next();
+			
+			if(st.equals("0")) break;
 
-		for(int i=1; i<=n; i++){
+			int degree = 0;
+			String tmp = st;
 
-			//用 Integer.parseInt(sc , 2) 來回傳 2 進制的 int
-			s1 = Integer.parseInt(sc.nextLine(), 2);
-			s2 = Integer.parseInt(sc.nextLine(), 2);
+			while(true){
+				int total = 0;
 
-			if(GCD(s1, s2) > 1) System.out.println("Pair #" + i + ": All you need is love!");
-			else System.out.println("Pair #" + i + ": Love is not all you need!");
+				for(int i=0; i<tmp.length(); i++){
+					total += tmp.charAt(i)-'0';
+				}
+
+				if(total % 9 == 0){
+					degree ++;
+					if(total == 9) break;
+					else tmp = Integer.toString(total);
+				}else break;
+			}
+
+			//如果他是因為不是 9 的倍數而跳出來，那他的count一定是0，就可以印出他不是
+			if(degree != 0) System.out.println(st + " is a multiple of 9 and has 9-degree " + degree + ".");
+			else System.out.println(st + " is not a multiple of 9."); 
 		}
-    }
-
-	static int GCD(int x, int y){
-		if(x%y==0) return y;
-		else return GCD(y, x%y);
 	}
 }

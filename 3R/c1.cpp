@@ -1,35 +1,28 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 int main(){
-    int n, m;
-    while(cin >> n >> m){
-        //先處理特殊情況
-        if((n<2) || (m<2)){
-            cout << "Boring!" << endl;
-            continue;
+    string s;
+    while(cin >> s && s!="0"){
+        int v = 0, degree = 1;
+
+        //把每個數字都加起來
+        for(int k=0; k<s.size(); k++){
+            v += s[k]-'0';
         }
 
-        int backup = n; //把 n 備份起來
-
-        //開始除
-        while(n%m == 0 && n>1){
-            n /= m;
-        }
-
-        //如果最後 n 不等於 1，就輸出 boring
-        //反之，如果是 1，就把 n 復原，然後再做一次除法
-        //在除之前要先印出，全部除完後，要記得印出 1
-        if(n!=1){
-            cout << "Boring!" << endl;
-        }else{
-            n = backup;
-            while(n%m==0 && n>1){
-                cout << n << " ";
-                n /= m;
+        while(v%9 == 0 && v != 9){
+            int sum = 0;
+            for(; v; v/=10){
+                sum += v%10; //將每個數字再加起來，因為是int的關係，所以用 mod 的找出個位數，再一個個加起來
             }
-            cout << "1" << endl;
+            v = sum;
+            degree ++;
         }
+
+        if(v%9) cout << s << " is not a multiple of 9." << endl;
+        else cout << s << " is a multiple of 9 and has 9-degree " << degree << "." << endl;
     }
-    return 0;
 }
