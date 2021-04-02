@@ -15,11 +15,13 @@ class Main{
 			s1 = Integer.parseInt(sc.nextLine(), 2);
 			s2 = Integer.parseInt(sc.nextLine(), 2);
 
+            //如果 s1 是 1 以外的數字，代表有其他公因數
 			if(GCD(s1, s2) > 1) System.out.println("Pair #" + i + ": All you need is love!");
 			else System.out.println("Pair #" + i + ": Love is not all you need!");
 		}
     }
 
+    //輾轉相除法
 	static int GCD(int x, int y){
 		if(x%y==0) return y;
 		else return GCD(y, x%y);
