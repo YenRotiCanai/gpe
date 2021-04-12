@@ -4,38 +4,38 @@ class Main{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
 
-		int n = sc.nextInt();
+		int n = Integer.parseInt(sc.nextLine());
+		sc.nextLine();
+		boolean first=true;
 
 		while(n-->0){
-			int len = sc.nextInt();
+			if(!first) System.out.println();
 
-			int arr[] = new int[len];
+			HashMap<String,Integer> hm = new HashMap<String,Integer>();
+			ArrayList<String> arrlist = new ArrayList<String>();
 
-			for(int i=0; i<len; i++){
-				arr[i] = sc.nextInt();
-			}
-			//System.out.println(Arrays.toString(arr));
+			float total = 0.0f;
 
-			int count = 0;
+			while(sc.hasNext()){
+				String str = sc.nextLine();
 
-			boolean sorted = true;
-			
-			int pt = 0;
-			while(sorted){
-				sorted = false;
-				for(int i=0; i<len-1; i++){
-					if(arr[i]>arr[i+1]){
-						int tmp = arr[i];
-						arr[i] = arr[i+1];
-						arr[i+1] = tmp;
-						sorted = true;
-						count++;
-					}
+				if(str.length() == 0) break;
+
+				//檢查看裡面是不是已經有 key 了，如果有的話，就把它的撈出來 +1
+				//沒有的話，就把它加進去
+				if(hm.containsKey(str)){
+					hm.put(str, hm.get(str)+1);
+				}else{
+					hm.put(str,1);
+					arrlist.add(str);
 				}
-				
+
+				total++;
 			}
 
-			System.out.printf("Optimal train swapping takes %d swaps.%n",count);
+			Collections.sort(arrlist);
+
+			for(String s:arrlist) System.out.printf("%s %.4f%n", s, (float)hm.get(s)/total*100);
 		}
 	}
 }
