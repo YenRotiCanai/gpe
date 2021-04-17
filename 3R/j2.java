@@ -3,35 +3,63 @@ import java.util.*;
 class Main{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
+        
+        int button[][] = {
+            {0,1,1,1,0,0,1,1,1,1},
+            {0,1,1,1,0,0,1,1,1,0},
+            {0,1,1,1,0,0,1,1,0,0},
+		 	{0,1,1,1,0,0,1,0,0,0},
+		 	{0,1,1,1,0,0,0,0,0,0},
+		 	{0,1,1,0,0,0,0,0,0,0},
+		 	{0,1,0,0,0,0,0,0,0,0},
+		  	{0,0,1,0,0,0,0,0,0,0},
+		  	{1,1,1,1,0,0,1,1,1,0},
+		  	{1,1,1,1,0,0,1,1,0,0},
+		  	{1,1,1,1,0,0,1,0,0,0},
+		  	{1,1,1,1,0,0,0,0,0,0},
+		  	{1,1,1,0,0,0,0,0,0,0},
+		  	{1,1,0,0,0,0,0,0,0,0},
+        };
+
+        HashMap<Character, int[]> fingers = new HashMap<Character, int[]>();
+        fingers.put('c',button[0]);
+        fingers.put('d',button[1]);
+        fingers.put('e',button[2]);
+		fingers.put('f',button[3]);
+		fingers.put('g',button[4]);
+		fingers.put('a',button[5]);
+		fingers.put('b',button[6]);
+		fingers.put('C',button[7]);
+		fingers.put('D',button[8]);
+		fingers.put('E',button[9]);
+		fingers.put('F',button[10]);
+		fingers.put('G',button[11]);
+		fingers.put('A',button[12]);
+		fingers.put('B',button[13]);
+
         int n = sc.nextInt();
+        sc.nextLine();
 
         while(n-->0){
-            int len = sc.nextInt();
-            int arr[] = new int[len];
 
-            for(int i=0; i<len; i++){
-                arr[i] = sc.nextInt();
-            }
+            int count[] = new int[10];
+            int cur[] = new int[10];
+            String str = sc.nextLine();
 
-            int count = 0;
-            boolean changed = true;
+            for(int i=0; i<str.length(); i++){
+                int next[] = fingers.get(str.charAt(i));
 
-            while(changed){
-                //先預設他沒換過，真的有換了就改成 true，這樣下一次會再進來一次
-                //而當他真的沒必要換的時候，就會一直保持 false，或是這也代表他已經換完了，這也下次就不會再進來
-                changed = false;
-                for(int i=0; i<len-1; i++){
-                    //如果有大過，就交換，然後count++
-                    if(arr[i]>arr[i+1]){
-                        int tmp = arr[i];
-                        arr[i] = arr[i+1];
-                        arr[i+1] = tmp;
-                        changed = true;
-                        count ++;
-                    }
+                for(int j=0; j<10; j++){
+                    if(cur[j] < next[j]) count[j]++;
+
+                    cur[j] = next[j];
                 }
             }
-            System.out.printf("Optimal train swapping takes %d swaps.%n",count);
+
+            StringBuilder sb = new StringBuilder(count[0]+"");
+            for(int i=1; i<10; i++) sb.append(" "+count[i]);
+
+            System.out.println(sb);
         }
 	}
 }
