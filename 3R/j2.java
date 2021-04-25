@@ -1,21 +1,27 @@
 import java.util.*;
-import java.math.*;
 
 class Main{
-	public static void main(String[] args){
-		Scanner sc = new Scanner(System.in);
-        while(sc.hasNext()){
-            String str = sc.nextLine();
-            str = str.replace("#","");
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        //Prime Check
+        int n = sc.nextInt();
+        int m = sc.nextInt();
 
-            BigInteger big = new BigInteger(str,2);
-            //System.out.println(big);
-            BigInteger d = BigInteger.valueOf(131071);
+        ArrayList<Integer> primeList = new ArrayList<Integer>();
 
-            if(big.mod(d) == BigInteger.ZERO) System.out.println("YES");
-            else System.out.println("NO");
-
+        for(int i=n; i<=m; i++){
+            if(primeCheck(i)) primeList.add(i);
         }
 
-	}
+        System.out.println(primeList);
+
+    }
+
+    public static Boolean primeCheck(int n){
+        if(n==1) return false;
+        for(int i=2; i<n; i++){
+            if(n % i== 0) return false;
+        }
+        return true;
+    }
 }

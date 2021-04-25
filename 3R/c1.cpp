@@ -1,31 +1,48 @@
-#include <iostream>
-#include <algorithm>
-using namespace std;
+#include <cstdio>
 
-//gcd function
-int gcd(int a, int b){
-    while(a %= b) swap(a,b);
-    return b;
+int m, n;
+char Map[110][110];
+bool Collected[110][110];
+
+void CollectOil(int i, int j){
+    if(i<0 || j<0 || i>=m || j>=n) return;
+    else if(Map[i][j]=='*' || Collected[i][j]==true) return;
+    else{
+        Collected[i][j] = true;
+        CollectOil(i-1,j-1);
+        CollectOil(i-1,j);
+        CollectOil(i-1,j+1);
+        CollectOil(i,j-1);
+        CollectOil(i,j+1);
+        CollectOil(i+1,j-1);
+        CollectOil(i+1,j);
+        CollectOil(i+1,j+1);
+    }
 }
 
 int main(){
-    int v[1001];
-    while(cin >> v[0] && v[0]){
-        int n=1;
-        int M, m;
-        M = m = v[0];
-        
-        while(cin >> v[n] && v[n]){
-            M = max(M, v[n]); //找出最大
-            m = min(m, v[n]); //找出最小
-            n++;
+    scanf("%d %d", &m, &n);
+    while(n!=0 || m!=0){
+        for(int i=0; i<m; i++){
+            scanf("%s", &Map[i]);
         }
 
-        int g = M-m; //設定初始 gcd 為 g
-        for(int k=0; k<n; k++){
-            g = gcd(v[k]-m, g); //所有的值減掉最小的 m 後，和 g 拿去做 gcd，再把 g 給回自己
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                Collected[i][j] = false;
+            }
         }
-        cout << g << endl; // 最後的 g 就是答案
-    }
+
+        int sum = 0;
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                if(Map[i][j] == '@' && Collected[i][j] == false){
+                    sum++;
+                    CollectOil(i, j);
+                }
+            }
+        }
+        printf("%d\n", sum);
+    }    
     return 0;
 }
