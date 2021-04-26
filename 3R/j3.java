@@ -3,23 +3,37 @@ import java.util.*;
 class Main{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		int m = sc.nextInt();
+		
+		int arr[] = new int[10001];
+		int count = 1;
 
-		ArrayList<Integer> prime = new ArrayList<Integer>();
+		while(sc.hasNext()){
+			arr[count] = sc.nextInt();
 
-		for(int i=n; i<=m; i++){
-			if(primeCheck(i)) prime.add(i);
+			for(int i=1; i<count; i++){
+				if(arr[count] <= arr[i]){
+					int tmp = arr[i];
+					arr[i] = arr[count];
+
+					for(int j=i; j<count; j++){
+						int tmp2 = arr[j+1];
+						arr[j+1] = tmp;
+						tmp = tmp2;
+					}
+					break;
+				}
+			}
+
+			if(count % 2 == 1){
+				System.out.println(arr[count/2+1]);
+			}else{
+				long a = arr[count/2];
+				long b = arr[count/2+1];
+
+				System.out.println((a+b)/2);
+			}
+			count ++;
 		}
-
-		System.out.println(prime);
-	}
-
-	public static Boolean primeCheck(int n){
-		if(n == 1) return false;
-		for(int i=2; i*i<=n; i++){
-			if(n % i == 0) return false;
-		}
-		return true;
+	
 	}
 }
