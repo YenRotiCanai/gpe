@@ -27,7 +27,7 @@ class Main{
                 prev_x = x;
                 x = next_x;
 
-                int next_y = prev_y - q *y;
+                int next_y = prev_y - q * y;
                 prev_y = y;
                 y = next_y;
             }

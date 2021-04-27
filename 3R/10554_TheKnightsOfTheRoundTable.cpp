@@ -16,7 +16,7 @@ int main(){
         double area = sqrt(s*(s-a)*(s-b)*(s-c));
         double r = (2*area)/(a+b+c);
 
-        printf("The radius of the round table is: %.3lf\n");
+        printf("The radius of the round table is: %.3lf\n", r);
     }
     return 0;
 }
