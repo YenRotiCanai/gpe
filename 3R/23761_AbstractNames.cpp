@@ -1,3 +1,5 @@
+//https://knightzone.studio/2020/04/13/4807/uva%EF%BC%9A11713%EF%BC%8Dabstract-names/
+
 #include <iostream>
 #include <cstdio>
 #include <cstring>
