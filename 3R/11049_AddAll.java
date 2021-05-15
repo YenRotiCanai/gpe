@@ -16,6 +16,9 @@ class Main{
 
             Arrays.sort(arr);
 
+            //從第 2 個開始，一直和上一個加
+            //加完後給回自己，然後重新排序
+            //下一輪就會變成 第二個和第三個
             for(int i=1; i<n; i++){
                 arr[i]+=arr[i-1];
                 sum += arr[i];

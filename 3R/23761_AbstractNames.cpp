@@ -26,6 +26,7 @@ int main(){
 
         bool isSame = true;
         for(int i=0; i < a.length(); i++){
+            //如果兩個不一樣，而且只要有一個不是音母，就是錯的
             if(a[i] != b[i] && (!isVowel(a[i]) || !isVowel(b[i]))){
                 isSame = false;
                 break;
