@@ -1,3 +1,4 @@
+//https://hellowalk.blogspot.com/2018/10/java-uva-145-gondwanaland-telecom.html
 import java.util.*;
 class Main {
 
