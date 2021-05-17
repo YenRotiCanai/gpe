@@ -8,6 +8,7 @@ class Main{
         boolean first = true;
         
         while(cases-->0){
+            //不知道他這為什麼要吃兩次
             sc.nextLine();
             sc.nextLine();
             String idxArr[] = sc.nextLine().split(" ");
