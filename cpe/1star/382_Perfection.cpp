@@ -1,5 +1,6 @@
+//直接用 mod 來檢查他是不是 factor，是的話就加進 sum
+//最後 sum 和測資比較
 #include <iostream>
-#include <vector>
 #include <cstdio>
 using namespace std;
 

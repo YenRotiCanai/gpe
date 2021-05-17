@@ -3,19 +3,33 @@ import java.util.*;
 class Main{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        //這個要放外面，因為他會一直吃到 EOF 
-        //裡面全部都算成是一筆測資
-        boolean first = true; 
-        
-        while(sc.hasNext()){
-            String str = sc.nextLine();
-            while(str.contains("\"")){
-                if(first) str = str.replaceFirst("\"","``");
-                else str = str.replaceFirst("\"","''");
+        int n = sc.nextInt();
+        sc.nextLine();
+        sc.nextLine();
 
-                first = !first;
+        boolean first = true;
+
+        while(n-->0){
+            if(!first) System.out.println();
+
+            char cArr[] = sc.nextLine().toCharArray();
+            boolean flag = false;
+
+            for(int i=1; i<cArr.length; i++){
+                flag = true;
+
+                for(int j=i; j<cArr.length && flag==true; j+=i){
+                    for(int k=0; k<i && flag==true; k++){
+                        if(cArr[k] != cArr[k+j]) flag = false;
+                    }
+                }
+
+                if(flag){
+                    System.out.println(i);
+                    break;
+                }
             }
-            System.out.println(str);
+            first = false;
         }
     }
 }
