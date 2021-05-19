@@ -18,11 +18,12 @@ int main(){
         int moves = 0;
 
         for(int i=0; i<n; i++){
-            if(arr[i] > avg) moves += arr[i] - moves;
+            if(arr[i] > avg) moves += arr[i] - avg;
         }
 
         cout << "Set #" << set << endl;
         cout << "The minimum number of moves is " << moves << "." << endl;
+        cout << endl;
 
         set++;
     }
