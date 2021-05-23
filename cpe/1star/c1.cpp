@@ -1,103 +1,71 @@
 #include <iostream>
-#include <map>
+#include <cstdio>
+#include <cstring>
+#include <sstream>
+#include <algorithm>
 
 using namespace std;
 
-typedef map<int, int> colMap;
-
-struct position{ 
-    int x, y; 
+struct Team{
+    bool join;
+    int num;
+    int score;
+    int problem;
+    int error[10];
 };
 
+bool cmp(Team a, Team b){
+    if(a.problem > b.problem) return true;
+    if(a.problem < b.problem) return false;
+    if(a.score < b.score) return true;
+    if(a.score > b.score) return false;
+    if(a.num < b.num) return true;
+    return false;
+}
+
 int main(){
-    int row, col, turNum, request;
+    int cases;
+    string entry;
+    stringstream ss;
+    Team teams[105];
+    int contestant, problem, time;
+    char L;
 
-    while(cin >> row >> col >> turNum >> request){
-        map<int, struct position> findTur; //存烏龜的id和目前位置
-        map<int, colMap> pool; //水池的地圖
-        map<int, int> rowMax;
+    while(scanf("%d", &cases) != EOF){
+        getchar();
+        getchar();
 
-        //開一個烏龜陣列叫做 pos，他是用來先放烏龜的位置，然後再把他放進map裡面
-        struct position pos[turNum]; 
+        for(int i=0; i<cases; i++){
+            if(i) printf("\n");
 
-        for(int i=0; i<turNum; i++){
-            int turId, x, y;
-
-            //讀進烏龜id和初始位置
-            cin >> turId >> x >> y;
-
-            //先把烏龜的x，y位置放到 pos 裡
-            pos[i].x = x;
-            pos[i].y = y;
-
-            //然後再把 pos 整層放進 map 裡
-            findTur[turId] = pos[i];
-
-            //記錄目前水池上，有哪隻烏龜
-            pool[x][y] = turId;
-        }
-
-        for(int i=0; i<request; i++){
-            int turId, x, y;
-            string dir;
-
-            //讀進烏龜的id 和 移動方向
-            cin >> turId >> dir;
-
-            //先根據 id 找出烏龜的目前位置
-            x = findTur[turId].x;
-            y = findTur[turId].y;
-
-            //把他在水池上的位置變成 0，代表他離開了
-            pool[x][y] = 0;
-
-            //根據方向移動
-            if(dir == "N") x--;
-            else if(dir == "S") x++;
-            else if(dir == "E") y++;
-            else if(dir == "W") y--;
-            else if(dir == "NE"){
-                x--;
-                y++;
-            }else if(dir == "NW"){
-                x--;
-                y--;
-            }else if(dir == "SE"){
-                x++;
-                y++;
-            }else if(dir == "SW"){
-                x++;
-                y--;
+            for(int j=0; j<105; j++){
+                teams[j].join = 0;
+                teams[j].num = j;
+                teams[j].score = 0;
+                teams[j].problem = 0;
+                memset( teams[j].error, 0, sizeof(teams[j].error));
             }
 
-            //移動完後，檢查他是不是還在範圍內
-            //而且抵達位置是不是沒有其他烏龜
-            //如果沒問題，就把他最後的 x 和 y 記錄起來
-            //也把他的位置對應到 pool 那邊，然後記錄他的 id
-            
-            //如果有問題，就用 id 重新找他的 x 和 y，將id 重新寫回水池
-            if(x >= 0 && y >= 0 && x < row && y < col && pool[x][y] == 0){
-                findTur[turId].x = x;
-                findTur[turId].y = y;
-                pool[x][y] = turId;
-            }else pool[findTur[turId].x][findTur[turId].y] = turId;
-        }
+            while(getline(cin, entry) && entry!=""){
+                ss.clear();
+                ss.str(entry);
+                ss >> contestant >> problem >> time >> L;
 
-        //這一段什麼意思？看不懂
-        for(int i=0; i<row; i++){
-            int j;
-            for(j = col-1; j>=0 && pool[i][j]==0; j--);
-            rowMax[i] = j;
-        }
-
-        for(int i=0; i<row; i++){
-            for(int j=0; j<=rowMax[i]; j++){
-                if(pool[i][j]) cout << "*";
-                else cout << ' ';
+                teams[contestant].join = true;
+                if(teams[contestant].error[problem] == -1) continue;
+                if( L == 'C' ){
+                    teams[contestant].score += time + teams[contestant].error[problem]*20;
+                    teams[contestant].problem ++;
+                    teams[contestant].error[problem] = -1;
+                }else if( L == 'I' ) teams[contestant].error[problem]++;
             }
-            cout << endl;
+
+            sort(teams, teams+105, cmp);
+
+            for(int j=0; j<105; j++){
+                if(teams[j].join) printf("%d %d %d\n", teams[j].num, teams[j].problem, teams[j].score);
+            }
         }
-        cout << endl;
     }
     return 0;
 }
