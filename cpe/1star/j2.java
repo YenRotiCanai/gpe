@@ -1,41 +1,28 @@
-//竟然不讓我用 arraylist 來存，只能用 array
-import java.util.*;
+import java.util.Scanner;
 
-class main{
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        Double point[][] = new Double[10][4];
-        int size = 0;
-
-        while(!sc.next().equals("*")){
-            point[size][0] = sc.nextDouble();
-            point[size][1] = sc.nextDouble();
-            point[size][2] = sc.nextDouble();
-            point[size][3] = sc.nextDouble();
-
-            size++;
-        }
-
-        int pt = 1;
-
-        while(sc.hasNext()){
-            Double a = sc.nextDouble();
-            Double b = sc.nextDouble();
-
-            if(a == 9999.9 && b == 9999.9) break;
-
-            boolean found = false;
-
-            for(int i=0; i<size; i++){
-                if(a > point[i][0] && a < point[i][2] && b < point[i][1] && b> point[i][3]) {
-                    found = true;
-                    System.out.printf("Point %d is contained in figure %d%n", pt, i+1);
-                }
-            }
-
-            if(!found) System.out.printf("Point %d is not contained in any figure%n", pt);
-
-            pt ++;
-        }
-    }
+class uva10281{
+	public static void main(String args[]){
+		Scanner sc=new Scanner(System.in);
+		
+		double km=0,v=0,v1=0,time=0,time2=0;
+		int startTime=0;
+		while(sc.hasNextLine()){
+			int i=0;
+			String st[]=sc.nextLine().split(" "); //時間、速度分開。
+			while(st[i].equals(""))i++;
+			//時間換算成秒。
+			String stString[]=st[i].split(":");
+			time=Double.parseDouble(stString[0])*3600+Double.parseDouble(stString[1])*60+Double.parseDouble(stString[2])*1; 
+			km+=(time-time2)*v/3600; //距離計算。
+			time2=time;
+			
+			//Output
+			if(st.length==1){
+				System.out.printf("%s %.2f km",st[0],km);
+				System.out.println("");
+			}else{
+				v=Double.parseDouble(st[i+1]);
+			}
+		}
+	}
 }

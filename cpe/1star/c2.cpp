@@ -1,20 +1,24 @@
-//http://minstrel-uva.blogspot.com/2011/10/acm-10257.html
+#include <iostream>
+#include <cstdlib>
 #include <cstdio>
-
+ 
 using namespace std;
+ 
+int main()
+{
+	char   buf[128];
+	int    c,h,m,s,t0 = 0,t1 = 0;
+	double d = 0.0,v0 = 0.0,v1 = 0.0;
+	while ( gets(buf) ) {
+		c  = sscanf(buf,"%d:%d:%d %lf",&h,&m,&s,&v1);
+		t1 = h*3600+m*60+s;
+		d += v0*(t1-t0)/3600.0;
+		t0 = t1;
+		if ( c == 3 )
+			printf("%.2d:%.2d:%.2d %.2lf km\n",h,m,s,d);
+		else v0 = v1;
+	}
+	
+	return 0;
 
-int main(){
-    int s, p, y, j, x;
-
-    while(scanf("%d %d %d %d", &s, &p, &y, &j) == 4){
-        x = (12 + j - p - y) / 3;
-        switch((12 + j - p - y) % 3){
-            case 0:
-                printf("%d %d %d\n", x+y, x+p, x);
-                break;
-            
-            case 1:
-                if( s + p == y) printf("%d %d %d\n", )
-        }
-    }
 }
