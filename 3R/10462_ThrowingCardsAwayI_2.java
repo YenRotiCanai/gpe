@@ -18,15 +18,15 @@ class Main{
     
             while(vt.size()>1){
                 System.out.print(" " + vt.firstElement());
+
+                //如果不想先做第一個，也可以這樣判斷
                 if(vt.size()>2) System.out.print(",");
     
                 vt.remove(0);
-                //System.out.println("after discard:" + vt);
     
                 vt.add(vt.elementAt(0));
                 vt.remove(0);
     
-                //System.out.println("new:" + vt);
             }
             System.out.println();
             System.out.printf("Remaining card: %d\n", vt.elementAt(0));

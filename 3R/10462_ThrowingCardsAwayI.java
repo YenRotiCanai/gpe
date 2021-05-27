@@ -16,6 +16,7 @@ class Main{
             }
             System.out.print("Discarded cards: ");
 
+            //先做第一個，然後就可以放心的加標點符號
             System.out.print(arr.remove(0));
             arr.add(arr.remove(0));
             
