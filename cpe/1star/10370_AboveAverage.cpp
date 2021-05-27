@@ -1,3 +1,4 @@
+//https://knightzone.studio/2011/12/14/1269/uva%EF%BC%9A10370%EF%BC%8Dabove-average/
 #include <iostream>
 #include <cstdio>
 using namespace std;

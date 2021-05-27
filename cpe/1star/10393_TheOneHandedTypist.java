@@ -1,3 +1,5 @@
+//只有treeset才會排序
+//不能用 arraylist remove 來刪除，因為他的順序會一直更新
 import java.util.*;
 
 class Main{
@@ -38,7 +40,7 @@ class Main{
 
             int max = 0;
             for(int i=0; i<n; i++){
-                String word = sc.next();
+                String word = sc.next(); //不能用nextLine
                 boolean reject = false;
 
                 //只要有一個字元不能打（沒有在set裡面），就拒絕
