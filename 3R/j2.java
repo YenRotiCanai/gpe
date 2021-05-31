@@ -1,16 +1,14 @@
 import java.util.*;
 
-class Main{
-	public static void main(String[] args){
-		Scanner sc = new Scanner(System.in);
-        int n = 11;
-        int total = 0;
+class uva11342{
+	public static void main(String args[]){
+		Scanner sc=new Scanner(System.in);
 
-        while(n>0){
-            total += n%10;
-            n/=10;
-        }
+        String s = sc.nextLine();
 
-        System.out.println(total);
+        s = s.replace("\"", "\\\"");
+
+        System.out.println(s);
+       
 	}
 }

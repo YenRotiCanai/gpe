@@ -1,3 +1,4 @@
+//https://blog.xuite.net/b81621java/blog/189144990
 import java.util.*;
 
 class Main{
