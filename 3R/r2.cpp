@@ -4,9 +4,15 @@
 using namespace std;
 
 int main(){
-	unsigned int a, b;
-	while(scanf("%u %u", &a, &b)!=EOF){
-		printf("%u\n", a^b);
+	int n;
+	
+	while(cin >> n && n){
+		int sum = 0;
+		for(int i=1; i<=n; i++){
+			if(n%i==0){
+				sum += i;
+			}
+		}
+		cout << sum << endl;
 	}
-	return 0;
 }
