@@ -1,52 +1,36 @@
 #include <iostream>
-#include <cmath>
 #include <stack>
 using namespace std;
 
-int prefixEvaluation(string s){
+int main(){
+    unsigned int n;
     stack<int> st;
 
-    for(int i=s.length()-1; i>=0; i--){
-
-        if(s[i] >= '0' && s[i] <= '9'){
-            st.push(s[i]-'0');
-        }else{
-            int op1 = st.top();
-            st.pop();
-            int op2 = st.top();
-            st.pop();
-
-            switch (s[i])
-            {
-            case '+':
-                st.push(op1 + op2);
-                break;
-            
-            case '-':
-                st.push(op1 - op2);
-                break;
-                
-            case '*':
-                st.push(op1 * op2);
-                break;
-
-            case '/':
-                st.push(op1 / op2);
-                break;
-
-            case '%':
-                st.push(op1 % op2);
-                break;
-            }
+    while(cin >> n && n!=-1){
+        if(n == 0){
+            cout << 0 << endl;
+            continue;
         }
-    }
-    return st.top();
-}
 
-int main(){
-    string s;
-    while(getline(cin, s) && s!= "."){
-        cout << prefixEvaluation(s) << endl;
+        int factor = 1;
+        int remainder;
+        while(n!=0){
+            remainder = n % factor;
+            //cout << "rem:" << remainder << endl;
+            st.push(remainder);
+
+            n /= factor;
+            factor++;
+        }
+
+        cout << st.top();
+        st.pop();
+
+        while(!st.empty()){
+            cout << " " << st.top();
+            st.pop();
+        }
+        cout << endl;
     }
     return 0;
 }

@@ -1,57 +1,39 @@
 #include <iostream>
-#include <cmath>
-#include <stack>
-#include <cstring>
-#include <sstream>
-#include <vector>
+#define max_fac 12
+
 using namespace std;
 
 int main(){
-    
-    string str;
-    string str2;
-    int value;
-    
-    while(getline(cin, str) && str!="."){
-        vector<string> vt;
-        stringstream ss(str);
-        bool illegal = false;
+    int fac[max_fac];
+    fac[0] = 0;
+    fac[1] = 1;
+    for(int i=2; i<max_fac; i++){
+        fac[i] = i * fac[i-1];
+    }
 
-        while(getline(ss, str2, ' ')){
-            vt.push_back(str2);
+    unsigned int n;
+    int m;
+    while(cin >> n && n != -1){
+
+        if(n == 0){
+            cout << 0 << endl;
+            continue;
         }
 
-        stack<int> st;
+        for(int i=max_fac-1; i>0; i--){
+            if(n==0) cout << 0 << " ";
 
-        for(int i=vt.size()-1; !illegal && i>=0; i--){
-
-            if(vt[i]!="+" && vt[i]!="-" && vt[i]!="*" && vt[i]!="/" && vt[i]!="%"){
-                stringstream si(vt[i]);
-                si >> value;
-                st.push(value);
-            }else{
-
-                if(st.size()<2){
-                    illegal = true;
-                    break;
-                }
-
-                int op1 = st.top();
-                st.pop();
-                int op2 = st.top();
-                st.pop();
-
-                if(vt[i] == "+") st.push(op1 + op2);
-                else if(vt[i] == "-") st.push(op1 - op2);
-                else if(vt[i] == "*") st.push(op1 * op2);
-                else if(vt[i] == "/") st.push(op1 / op2);
-                else if(vt[i] == "%") st.push(op1 % op2);
+            //cout << "n:" << n << endl;
+            
+            if(fac[i] > n) continue;
+            else{
+                m = n / fac[i];
+                n %= fac[i];
+                cout << m << " ";
             }
         }
-
-        if(illegal) cout << "illegal" << endl;
-        else cout << st.top() << endl;
-
+        cout << 0 << endl;
     }
+
     return 0;
 }

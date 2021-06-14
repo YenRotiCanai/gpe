@@ -16,6 +16,7 @@ int main(){
         //找出因數，用 map 來統計出現過多少次
         for(int i=2; i<sqrt(n); i++){
             while(n%i == 0){
+                cout << "in" << endl;
                 mp[i]++;
                 n /= i;
             }
@@ -49,7 +50,7 @@ int main(){
             }
             sum *= p;
         }
-        printf("%d\n%d\n===\n", num, sum);
+        printf("%d\n%lu\n===\n", num, sum);
     }
     return 0;
 }

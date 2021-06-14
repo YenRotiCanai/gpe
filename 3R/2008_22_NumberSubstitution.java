@@ -20,25 +20,19 @@ public class Main {
 			char cArr1[] = s1.toCharArray();
 			char cArr2[] = s2.toCharArray();
 
-			//System.out.println("cA1:" + Arrays.toString(cArr1));
-			//System.out.println("cA2:" + Arrays.toString(cArr2));
-
 			int start = 0;
 			int end = 0;
 			int k = 0;
 			boolean same = false;
 			for(int i=0; !same && i<cArr1.length; i++){
-				//System.out.println("i:"+i);
 				k = 0;
 				int j = i;
 				while(!same){
-					//System.out.printf("cA1:%c, cA2:%c\n", cArr1[j], cArr2[k]);
 
 					if(cArr1[j] == cArr2[k]){
 						k++;
 						j++;
 					}else{
-						//System.out.println("not same");
 						break;
 					}
 
@@ -49,12 +43,9 @@ public class Main {
 					}
 				}
 			}
-
-			//System.out.println(start + " " + end);
 			
 			String left = s1.substring(0, start);
 			String right = s1.substring(end+1, s1.length());
-			//System.out.println(left + " " + right);
 
 			StringBuilder sb = new StringBuilder(s3);
 			sb = sb.insert(0, left).append(right);
