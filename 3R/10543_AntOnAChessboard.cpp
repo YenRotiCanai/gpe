@@ -1,5 +1,8 @@
 //https://knightzone.studio/2015/01/14/2668/uva%EF%BC%9A10161%EF%BC%8Dant-on-a-chessboard/
 //http://naivered.github.io/2016/07/12/Problem_Solving/UVa/UVa-10161-Ant-on-a-Chessboard/
+/*
+
+*/
 
 #include <iostream>
 #include <cmath>
@@ -13,7 +16,7 @@ int main(){
     int N;
 
     while(scanf("%d", &N)!=EOF && N!=0){
-        //找有幾層
+        //找他是在第幾層
         int layer = (int)(sqrt((double)(N-1)) + EPSILON) + 1 ;
         
         //找 median
