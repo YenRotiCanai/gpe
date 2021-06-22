@@ -14,13 +14,14 @@ int main(){
         mp.clear();
         
         //找出因數，用 map 來統計出現過多少次
-        for(int i=2; i<sqrt(n); i++){
+        for(int i=2; i<=sqrt(n)+1; i++){
             while(n%i == 0){
                 mp[i]++;
                 n /= i;
             }
+            if(n==1) break;
         }
-        if(n>2) mp[n]++; //最後一個因數
+        if(mp.empty()) mp[n]++; //最後一個因數
 
         //印出題目要的
         for(iter = mp.begin(); iter!=mp.end(); iter++){
@@ -30,8 +31,8 @@ int main(){
 
         int num = 1;
         unsigned long sum = 1;
-        int pow_result;
-        int p;
+        unsigned long pow_result;
+        unsigned long p;
         
         //根據題目的 formula 來算 no. of divisor 和 sum of divisor
         for(iter = mp.begin(); iter!=mp.end(); iter++){
@@ -44,12 +45,12 @@ int main(){
             //算 sum of divisor
             p = 0;
             for(int i=0; i<=b; i++){
-                pow_result = (int)(pow(a, i)+0.5);
+                pow_result = (unsigned long)(pow(a, i)+0.5);
                 p += pow_result;
             }
             sum *= p;
         }
-        printf("%d\n%d\n===\n", num, sum);
+        printf("%d\n%lu\n===\n", num, sum);
     }
     return 0;
 }
