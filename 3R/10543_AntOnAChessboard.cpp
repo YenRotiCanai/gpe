@@ -1,7 +1,7 @@
 //https://knightzone.studio/2015/01/14/2668/uva%EF%BC%9A10161%EF%BC%8Dant-on-a-chessboard/
 //http://naivered.github.io/2016/07/12/Problem_Solving/UVa/UVa-10161-Ant-on-a-Chessboard/
 /*
-
+先找出N應該位在哪一層，再找出那層的中間數，與中間數比較後即可求得x與y值
 */
 
 #include <iostream>
