@@ -7,7 +7,7 @@ using namespace std;
 int main(){
     char str[N], rev[N]; //用來存測資和 reverse 測資的陣列
 
-    while(scanf("%s", str)){
+    while(gets(str)){
         int fail[N] = { -1 }; //把第一個設為 -1
         int len = strlen(str);
         int i, j;
@@ -37,11 +37,11 @@ int main(){
             if(rev[j+1] == str[i]) j++;
         }
 
-        for(i = 0; i<len; i++) printf("%c", str[i]);
+        for(i = 0; i<len; i++) putchar(str[i]);
 
-        for(j++; j<len; j++) printf("%c", rev[j]);
+        for(j++; j<len; j++) putchar(rev[j]);
 
-        printf("\n");
+        putchar('\n');
     }
     return 0;
 }
