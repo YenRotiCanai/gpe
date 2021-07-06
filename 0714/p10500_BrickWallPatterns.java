@@ -1,3 +1,6 @@
+//費式數列
+//直接建表，然後查表
+
 import java.util.*;
 
 class Main{
