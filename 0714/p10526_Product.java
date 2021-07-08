@@ -1,3 +1,4 @@
+//直接用 biginteger 乘
 import java.util.*;
 import java.math.BigInteger;
 class Main{
