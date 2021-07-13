@@ -27,6 +27,7 @@ class p10404 {
         			tmpSum++;
         			carry = false;
         		}
+				
         		if(tmpSum>9){
         			cSum++;
         			carry = true;
