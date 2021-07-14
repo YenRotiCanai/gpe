@@ -1,5 +1,5 @@
 //10400:3n+1
-
+//跟著題目，要用 long
 import java.util.*;
 
 class main{
@@ -13,7 +13,6 @@ class main{
 
 			count ++;
 		}
-
 		return count;
 	}
 

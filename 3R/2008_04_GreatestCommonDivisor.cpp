@@ -1,4 +1,5 @@
 // 特殊情況： b 是 0 的話，就直接返回 a，因為不能除
+// 直接 GCD
 #include <iostream>
 using namespace std;
 

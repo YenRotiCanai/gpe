@@ -1,23 +1,33 @@
-//https://blog.csdn.net/mobius_strip/article/details/38539407
-
+#include <iostream>
+#include <climits>
 #include <cstdio>
 
 using namespace std;
 
 int main(){
-    char str[32];
+    int n;
+    int cases = 1;
+    while(cin >> n){
 
-    while(gets(str)){
-        int n;
+        long long fib[n+5];
+        fib[0] = 0;
+        fib[1] = 1;
 
-        if(str[1] == 'x'){
-            sscanf(str, "%x", &n);
-            printf("%d\n", n);
-        }else{
-            sscanf(str, "%d", &n);
-            if(n<0) break;
-            printf("0x%X\n", n);
+        bool over = false;
+
+        for(int i=2; i<=n; i++){
+            fib[i] = fib[i-1] + fib[i-2];
+
+            if(fib[i] > UINT_MAX){
+                over = true;
+                break;
+            }
         }
+
+        printf("case %d:\n", cases++);
+
+        if(over) printf("overflow\n\n");
+        else printf("%lld\n\n", fib[n]);
     }
     return 0;
 }

@@ -1,3 +1,4 @@
+//看看 sqrt後 和之前的是不是一樣
 #include <iostream>
 #include <cmath>
 
